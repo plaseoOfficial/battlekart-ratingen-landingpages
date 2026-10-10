@@ -1,0 +1,13 @@
+{
+  "name": "battlekart-ratingen-landingpages",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "vorschau": "node vorschau.mjs",
+    "pruefen": "node pruefen.mjs",
+    "build": "node pruefen.mjs && node bauen.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

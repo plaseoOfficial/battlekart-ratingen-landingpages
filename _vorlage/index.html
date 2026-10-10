@@ -1,0 +1,118 @@
+<!doctype html>
+<!--
+  VORLAGE für eine neue Landingpage. Nicht direkt bearbeiten, sondern den ganzen Ordner kopieren.
+  Ausfüllen: Anzeigengruppe, Suchbegriffe, Status. Bausteine, die nicht passen, ganz löschen.
+  Weitere Bausteine (Gruppen, Anfahrt, Fragen) gibt es fertig in ../kartfahren/index.html.
+
+  Landingpage: [NAME DER SEITE]
+  Für Anzeigengruppe: [ANZEIGENGRUPPE]
+  Suchbegriffe: [SUCHBEGRIFFE]
+  Status: ENTWURF vom [DATUM]. Nicht veröffentlicht.
+-->
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[SEITENTITEL, HÖCHSTENS 60 ZEICHEN]</title>
+  <meta name="description" content="[KURZBESCHREIBUNG FÜR GOOGLE, ETWA 150 ZEICHEN]">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../gemeinsam/stil.css">
+</head>
+<body>
+
+  <!-- Baustein: Kopfzeile -->
+  <header class="kopf">
+    <div class="innen">
+      <a class="marke" href="#start">
+        <img src="../gemeinsam/logo-battlekart.png" alt="BattleKart Logo" width="84" height="63">
+        <span>Düsseldorf-Ratingen</span>
+      </a>
+      <a class="knopf klein" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Buchen</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Baustein: Startbereich. Die Überschrift greift die Suchbegriffe der Anzeige auf. -->
+    <section class="start" id="start">
+      <div class="innen">
+        <div>
+          <span class="oberzeile">[KURZER HINWEIS, Z. B. EIN DATUM]</span>
+          <h1>[HAUPTÜBERSCHRIFT]</h1>
+          <p class="unterzeile">[ZWEI SÄTZE: WAS IST DAS, WARUM HIER]</p>
+          <ul class="fakten">
+            <li>6 Spielmodi</li>
+            <li>2 bis 12 Personen</li>
+            <li>15 Minuten pro Spiel</li>
+            <li>ab 1,45 m</li>
+          </ul>
+          <div class="knoepfe">
+            <a class="knopf" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Termin online buchen</a>
+            <a class="knopf zweit" href="tel:[RUFNUMMER]">Anrufen</a>
+          </div>
+        </div>
+        <div class="foto-platzhalter" role="img" aria-label="Foto folgt">
+          Foto folgt: [WAS SOLL DRAUF].<br>Echtes Foto vom Standort, keine KI.
+        </div>
+      </div>
+    </section>
+
+    <!-- Baustein: Drei Karten -->
+    <section class="abschnitt">
+      <div class="innen">
+        <h2>[ÜBERSCHRIFT]</h2>
+        <p class="einleitung">[EIN BIS ZWEI SÄTZE]</p>
+        <div class="raster drei">
+          <div class="karte">
+            <h3>[PUNKT 1]</h3>
+            <p>[TEXT]</p>
+          </div>
+          <div class="karte">
+            <h3>[PUNKT 2]</h3>
+            <p>[TEXT]</p>
+          </div>
+          <div class="karte">
+            <h3>[PUNKT 3]</h3>
+            <p>[TEXT]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Baustein: Schluss mit Knopf -->
+    <section class="abschnitt hell">
+      <div class="innen">
+        <h2>[AUFFORDERUNG]</h2>
+        <div class="knoepfe">
+          <a class="knopf" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Termin online buchen</a>
+          <a class="knopf zweit" href="tel:[RUFNUMMER]">Anrufen</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Baustein: Fußzeile. Impressum und Datenschutz sind Pflicht. -->
+  <footer class="fuss">
+    <div class="innen">
+      <div>
+        <strong>BattleKart Düsseldorf-Ratingen</strong><br>
+        Halskestraße 18, 40880 Ratingen<br>
+        Telefon: [RUFNUMMER]<br>
+        Betrieben von der Mindoortainment GmbH
+      </div>
+      <nav>
+        <a href="[IMPRESSUM-LINK]">Impressum</a>
+        <a href="[DATENSCHUTZ-LINK]">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Baustein: Leiste unten auf dem Handy -->
+  <div class="handyleiste">
+    <a class="knopf" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen</a>
+    <a class="knopf zweit" href="tel:[RUFNUMMER]">Anrufen</a>
+  </div>
+
+</body>
+</html>
