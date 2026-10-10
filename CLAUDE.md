@@ -42,6 +42,14 @@ Die Regeln aus der Haupt-`CLAUDE.md` und `akte/regeln.md` gelten zusätzlich und
 
 ## Veröffentlichen
 
-Niemand hier veröffentlicht. Fertig heißt: `npm run pruefen -- --live` ohne Fehler, dann legt Ben
-die Seite frei und entscheidet, wo sie online geht. Ob eigene Landingpages erlaubt sind, entscheidet
-HQ (Fahrplan: bis Do 15.10.2026).
+- **Online:** https://battlekart-ratingen-landingpages.vercel.app (Vercel, Team plaseo, mit `noindex`).
+  Die Startadresse leitet auf `/kartfahren/` weiter.
+- **Repo:** https://github.com/plaseoOfficial/battlekart-ratingen-landingpages (privat). Dieser Ordner
+  ist ein eigenes Git-Repo und gehört nicht zum Repo `mindoortainment`.
+- **Nur Ben veröffentlicht** oder gibt es ausdrücklich frei. Ablauf: `npm run pruefen` ohne ❌, Änderung
+  committen und pushen, dann `vercel deploy --prod --scope plaseo-dev`. Ein Push allein veröffentlicht
+  nichts, weil der Hobby-Tarif von Vercel kein privates Repo einer Organisation verbinden kann.
+- Vercel prüft bei jedem Veröffentlichen zuerst (`npm run build`). Bei ❌ bricht es ab.
+  `CLAUDE.md`, `README.md`, Skripte und `_vorlage/` werden nie veröffentlicht (`bauen.mjs`).
+- Ob eigene Landingpages für Anzeigen erlaubt sind, entscheidet HQ (Fahrplan: bis Do 15.10.2026).
+  Bis dahin ist die Seite ein Ansichts-Link, kein Anzeigenziel.

@@ -50,7 +50,8 @@ const server = createServer(async (req, res) => {
       return res.end(await seitenListe());
     }
     let datei = normalize(join(ORDNER, pfad));
-    if (datei !== ORDNER && !datei.startsWith(ORDNER + sep)) {
+    const versteckt = pfad.split("/").some((teil) => teil.startsWith("."));
+    if (versteckt || (datei !== ORDNER && !datei.startsWith(ORDNER + sep))) {
       res.writeHead(403);
       return res.end("Nicht erlaubt");
     }
@@ -67,7 +68,8 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
+// Nur auf diesem Rechner erreichbar, nicht im WLAN.
+server.listen(PORT, "127.0.0.1", () => {
   console.log(`Vorschau läuft: http://localhost:${PORT}`);
   console.log("Beenden mit Strg+C.");
 });

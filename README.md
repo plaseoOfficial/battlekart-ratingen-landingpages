@@ -3,6 +3,9 @@
 Hier entstehen die Seiten, auf die unsere Google-Anzeigen führen. Du schreibst in normalen Sätzen,
 was du willst. Claude baut es und zeigt dir das Ergebnis.
 
+**Ansehen ohne Installation:** https://battlekart-ratingen-landingpages.vercel.app
+Dort steht immer der Stand, den Ben zuletzt veröffentlicht hat.
+
 ## So fängst du an
 
 1. Öffne T3 Code (oder Claude Code) im Projekt `mindoortainment`.
@@ -33,7 +36,7 @@ was du willst. Claude baut es und zeigt dir das Ergebnis.
 1. **Keine erfundenen Fakten.** Preise, Zeiten und Rufnummer nur, wenn sie bestätigt sind.
    Sonst bleibt der Platzhalter stehen.
 2. **Nur echte Fotos** vom Standort. Keine KI-Bilder.
-3. **Nichts geht online ohne Ben.** Alles hier ist ein Entwurf.
+3. **Nichts geht online ohne Ben.** Speichern ist nicht Veröffentlichen. Das macht nur Ben.
 
 ## Was wo liegt
 
