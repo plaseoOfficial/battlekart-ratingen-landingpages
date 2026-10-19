@@ -21,23 +21,34 @@
   - Lalezar + Noto Sans liegen lokal in ./fonts/ (fonts.css), kein Abruf bei Google mehr (DSGVO). Erledigt 15.10.2026.
 -->
 <link rel="stylesheet" href="fonts/fonts.css">
-<!-- ================= EINWILLIGUNG + GOOGLE TAG MANAGER =================
-  Google Consent Mode v2: Standard ist "abgelehnt". Erst nach Klick auf "Akzeptieren" darf GTM Cookies setzen.
-  ANPASSEN: GTM-ID eintragen (z. B. "GTM-ABC1234"). Solange leer, wird gar nichts von Google geladen.
-  In GTM dann: Google-Ads-Tag + Conversions "lp_cta_click" (Buchen-Klick) und Klick auf tel: als Anruf. -->
+<!-- ================= EINWILLIGUNG + GOOGLE-ADS-TAG =================
+  Google Consent Mode v2: Standard ist "abgelehnt". Der Google-Tag (gtag.js) wird erst nach Klick auf
+  "Akzeptieren" geladen, vorher geht keine Anfrage an Google.
+  Konto 771-480-0041 "Battlekart Ratingen", Google-Tag AW-18486708769.
+  ANPASSEN: Conversion-Labels aus Google Ads eintragen (Ziele → Conversions → Aktion → Tag einrichten →
+  "send_to: 'AW-18486708769/XXXX'", nur den Teil hinter dem Schrägstrich). Leeres Label = diese Conversion wird nicht gesendet.
+    buchen  = Klick auf einen "Jetzt buchen"-Knopf (alle a.js-book)
+    anruf   = Klick auf eine Telefonnummer (alle tel:-Links)
+    anfrage = Klick auf "Angebot anfragen" (Firmenformular von BattleKart) -->
 <script>
-  window.BK_GTM_ID = '';
+  window.BK_ADS = { id: 'AW-18486708769', buchen: '', anruf: '', anfrage: '' };
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
+  window.bkLoadTag = function () {
+    if (window.bkTagLoaded) return;
+    window.bkTagLoaded = true;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(BK_ADS.id);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', BK_ADS.id);
+  };
   (function () {
     var c = null; try { c = localStorage.getItem('bk_consent'); } catch (e) {}
-    if (c === 'granted') gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
-    if (window.BK_GTM_ID) {
-      dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-      var s = document.createElement('script'); s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(window.BK_GTM_ID);
-      document.head.appendChild(s);
+    if (c === 'granted') {
+      gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+      bkLoadTag();
     }
   })();
 </script>
@@ -1091,12 +1102,24 @@ section { position: relative; }
     });
   }
 
-  /* ---------- Klick-Events für Google Tag Manager (wirkt erst, wenn GTM + Consent eingebunden sind) ---------- */
+  /* ---------- Klick-Events in den dataLayer (welcher Knopf, wie viele Personen/Spiele) ---------- */
   window.dataLayer = window.dataLayer || [];
   document.querySelectorAll('.js-track').forEach(function (a) {
     a.addEventListener('click', function () {
       window.dataLayer.push({ event: 'lp_cta_click', lp_cta: a.dataset.cta, lp_players: total(), lp_adults: adults, lp_kids: kids, lp_games: games });
     });
+  });
+
+  /* ---------- Google-Ads-Conversions (nur mit Einwilligung und eingetragenem Label, siehe BK_ADS oben) ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || !window.bkTagLoaded) return;
+    var href = a.getAttribute('href'), art = null;
+    if (a.classList.contains('js-book')) art = 'buchen';
+    else if (href.indexOf('tel:') === 0) art = 'anruf';
+    else if (href.indexOf('formulier-b2b') > -1) art = 'anfrage';
+    if (!art || !BK_ADS[art]) return;
+    gtag('event', 'conversion', { send_to: BK_ADS.id + '/' + BK_ADS[art], transport_type: 'beacon' });
   });
 
   /* ---------- Header + mobile Buchungsleiste ---------- */
@@ -1181,6 +1204,7 @@ section { position: relative; }
       var v = b.getAttribute('data-consent');
       try { localStorage.setItem('bk_consent', v); } catch (e) {}
       gtag('consent', 'update', { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+      if (v === 'granted') bkLoadTag();
       box.hidden = true;
     });
   });
