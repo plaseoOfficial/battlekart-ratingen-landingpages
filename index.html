@@ -479,7 +479,7 @@ section { position: relative; }
 @media (max-width: 720px) {
   :root { --header-h: 60px; }
   body { font-size: 16px; }
-  .brand img { height: 40px; }
+  .brand img { height: 52px; }
   .brand span, .header__phone .txt { display: none; }
   .header .btn--sm { display: none; }
   .hero { min-height: auto; padding-top: calc(var(--header-h) + 26px); padding-bottom: 40px; }
@@ -592,108 +592,10 @@ section { position: relative; }
       <li><b>Ab 1</b><span>Person buchbar · bis 12 pro Rennen</span></li>
       <li><b>ab 1,45 m</b><span>Körpergröße</span></li>
       <li><b>0</b><span>Führerschein oder Erfahrung nötig</span></li>
-      <li><b>E-Karts</b><span>kein Helm · Anti-Kollisionssystem</span></li>
+      <li><b>E-Karts</b><span>kein Helm · sicheres Fahren</span></li>
     </ul>
   </div>
 </div>
-
-<!-- ================= SO FUNKTIONIERT'S ================= -->
-<section class="section" aria-labelledby="how-title">
-  <div class="wrap">
-    <div class="section__head">
-      <span class="kicker">Warum BattleKart?</span>
-      <h2 id="how-title">Echtes Kart. <span class="hl">Echtes Videospiel.</span></h2>
-    </div>
-    <div class="steps">
-      <article class="step">
-        <div class="step__icon"><svg><use href="#i-kart"/></svg></div>
-        <h3>Echte Elektro-Karts</h3>
-        <p>Du gibst Gas, bremst und lenkst selbst. Kurze Einweisung, Gurt an, los.</p>
-      </article>
-      <article class="step">
-        <div class="step__icon"><svg><use href="#i-bolt"/></svg></div>
-        <h3>Das Spiel liegt auf dem Boden</h3>
-        <p>Beamer projizieren Strecke, Raketen und Nitro auf den Boden. Einsammeln per Überfahren, zünden am Lenkrad.</p>
-      </article>
-      <article class="step">
-        <div class="step__icon"><svg><use href="#i-trophy"/></svg></div>
-        <h3>6 Spielmodi</h3>
-        <p>Rennen, Fußball, Billard, Snake und mehr. Bis zu 3 verschiedene Modi pro Buchung.</p>
-      </article>
-    </div>
-    <p class="notice"><svg><use href="#i-eye"/></svg><span><strong>Kein Simulator, keine VR-Brille.</strong> Das Kart fährt wirklich – du gibst Gas, bremst und lenkst selbst durch die projizierte Spielwelt.</span></p>
-  </div>
-</section>
-
-<!-- ================= PREISE + GRUPPENRECHNER ================= -->
-<section class="section section--alt" id="preise" aria-labelledby="price-title">
-  <div class="wrap">
-    <div class="section__head">
-      <span class="kicker">Preise</span>
-      <h2 id="price-title">Klare Preise. <span class="hl">Keine Überraschungen.</span></h2>
-      <p class="lead">Alle Preise pro Person, inklusive MwSt. Mehr Spiele, günstiger pro Spiel – rechne aus, was euer Rennen kostet.</p>
-    </div>
-
-    <div class="pricing">
-      <!-- Preistabelle (ANPASSEN: muss mit der Center-Seite übereinstimmen) -->
-      <div class="card prices">
-        <h3>Preis pro Person</h3>
-        <div class="tabs" role="tablist" aria-label="Preiskategorie">
-          <button role="tab" aria-selected="true" aria-controls="pt-adult" id="tab-adult">Erwachsene</button>
-          <button role="tab" aria-selected="false" aria-controls="pt-kid" id="tab-kid" tabindex="-1">Unter 15</button>
-        </div>
-        <ul class="price-list" id="pt-adult" role="tabpanel" aria-labelledby="tab-adult">
-          <li><span>1 Spiel · 15 Min.</span><b>22 €</b></li>
-          <li><span>2 Spiele · 30 Min. <em class="save">spart 2 €</em></span><b>42 €</b></li>
-          <li><span>3 Spiele · 45 Min. <em class="save">spart 7 €</em></span><b>59 €</b></li>
-        </ul>
-        <ul class="price-list" id="pt-kid" role="tabpanel" aria-labelledby="tab-kid" hidden>
-          <li><span>1 Spiel · 15 Min.</span><b>18 €</b></li>
-          <li><span>2 Spiele · 30 Min. <em class="save">spart 2 €</em></span><b>34 €</b></li>
-          <li><span>3 Spiele · 45 Min. <em class="save">spart 6 €</em></span><b>48 €</b></li>
-        </ul>
-        <!-- Gruppenpreis (laut Center-Seite 19 € / 17 € pro Spiel) erst wieder einblenden, wenn feststeht, ab wie vielen Personen er gilt. -->
-        <p class="prices__note">Preise pro Person, inkl. MwSt. 1 Spiel = 15 Minuten inkl. Ein- und Ausstieg. Jedes weitere Spiel 17 € (unter 15: 14 €). Größere Gruppe? <a href="tel:+492102445500">02102&nbsp;445500</a>.</p>
-      </div>
-
-      <!-- Preisrechner: Erwachsene und unter 15 getrennt, jede Person zu ihrem Preis -->
-      <div class="card calc" aria-labelledby="calc-title">
-        <h3 id="calc-title">Was kostet dein Rennen?</h3>
-
-        <span class="calc__label" id="lbl-adults">Wie viele Erwachsene?</span>
-        <div class="stepper" role="group" aria-labelledby="lbl-adults">
-          <button type="button" id="a-minus" aria-label="Ein Erwachsener weniger">−</button>
-          <output id="a-out" aria-live="polite">1<small>Erwachsene</small></output>
-          <button type="button" id="a-plus" aria-label="Ein Erwachsener mehr">+</button>
-        </div>
-
-        <span class="calc__label" id="lbl-kids">Wie viele unter 15 Jahren?</span>
-        <div class="stepper" role="group" aria-labelledby="lbl-kids">
-          <button type="button" id="k-minus" aria-label="Eine Person unter 15 weniger">−</button>
-          <output id="k-out" aria-live="polite">0<small>unter 15</small></output>
-          <button type="button" id="k-plus" aria-label="Eine Person unter 15 mehr">+</button>
-        </div>
-
-        <span class="calc__label" id="lbl-games">Wie viele Spiele?</span>
-        <div class="games" role="radiogroup" aria-labelledby="lbl-games" id="games">
-          <button type="button" role="radio" aria-checked="false" data-games="1"><b>1 Spiel</b><span>15 Min.</span><i></i></button>
-          <button type="button" role="radio" aria-checked="true" data-games="2"><em>Beliebt</em><b>2 Spiele</b><span>30 Min.</span><i></i></button>
-          <button type="button" role="radio" aria-checked="false" data-games="3"><em>Bester Preis</em><b>3 Spiele</b><span>45 Min.</span><i></i></button>
-        </div>
-
-        <div class="calc__result" aria-live="polite">
-          <div class="calc__total" id="c-total">42 €</div>
-          <div class="calc__per"><b id="c-per">42 € p. P.</b><span id="c-time">2 Spiele · 30 Min.</span></div>
-          <p class="calc__vat" id="c-vat">Gesamtpreis für 1 Erwachsenen, inkl. MwSt.</p>
-        </div>
-        <a class="btn btn--block btn--book js-book js-track" data-cta="calc_book" id="c-cta" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">
-          <svg><use href="#i-cal"/></svg>Jetzt buchen
-        </a>
-        <p class="calc__more">Mehr als 12 Leute oder Firmenevent? <a class="js-track" data-cta="calc_b2b" href="https://survey.battlekart.com/de/formulier-b2b/?center=duesseldorf-ratingen&amp;countrycode=DEU" target="_blank" rel="noopener">Angebot anfragen</a> oder <a class="js-track" data-cta="calc_phone" href="tel:+492102445500">anrufen</a>.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ================= SPIELMODI ================= -->
 <section class="section" aria-labelledby="modes-title">
@@ -746,52 +648,139 @@ section { position: relative; }
   </div>
 </section>
 
-<!-- ================= ANLÄSSE ================= -->
-<section class="section section--alt" aria-labelledby="occ-title">
+<!-- ================= PREISE + GRUPPENRECHNER ================= -->
+<section class="section section--alt" id="preise" aria-labelledby="price-title">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="kicker">Preise</span>
+      <h2 id="price-title">Klare Preise. <span class="hl">Keine Überraschungen.</span></h2>
+      <p class="lead">Alle Preise pro Person. Mehr Spiele, günstiger pro Spiel – rechne aus, was euer Rennen kostet. <strong>Wer zuerst bucht, wählt die Spiele!</strong></p>
+    </div>
+
+    <div class="pricing">
+      <!-- Preistabelle (ANPASSEN: muss mit der Center-Seite übereinstimmen) -->
+      <div class="card prices">
+        <h3>Preis pro Person</h3>
+        <div class="tabs" role="tablist" aria-label="Preiskategorie">
+          <button role="tab" aria-selected="true" aria-controls="pt-adult" id="tab-adult">Erwachsene</button>
+          <button role="tab" aria-selected="false" aria-controls="pt-kid" id="tab-kid" tabindex="-1">Unter 15</button>
+        </div>
+        <ul class="price-list" id="pt-adult" role="tabpanel" aria-labelledby="tab-adult">
+          <li><span>1 Spiel · 15 Min.</span><b>22 €</b></li>
+          <li><span>2 Spiele · 30 Min. <em class="save">spart 2 €</em></span><b>42 €</b></li>
+          <li><span>3 Spiele · 45 Min. <em class="save">spart 7 €</em></span><b>59 €</b></li>
+        </ul>
+        <ul class="price-list" id="pt-kid" role="tabpanel" aria-labelledby="tab-kid" hidden>
+          <li><span>1 Spiel · 15 Min.</span><b>18 €</b></li>
+          <li><span>2 Spiele · 30 Min. <em class="save">spart 2 €</em></span><b>34 €</b></li>
+          <li><span>3 Spiele · 45 Min. <em class="save">spart 6 €</em></span><b>48 €</b></li>
+        </ul>
+        <!-- Gruppentarif gilt ab 10 Personen und wird im Shop automatisch berechnet (Korrekturen 19.10.2026). -->
+        <p class="prices__note">Preise pro Person. 1 Spiel = 15 Minuten inkl. Ein- und Ausstieg. Jedes weitere Spiel 17 € (unter 15: 14 €). Größere Gruppe? Ab 10 Personen erhältst du im Shop automatisch den Gruppentarif!</p>
+      </div>
+
+      <!-- Preisrechner: Erwachsene und unter 15 getrennt, jede Person zu ihrem Preis -->
+      <div class="card calc" aria-labelledby="calc-title">
+        <h3 id="calc-title">Was kostet dein Rennen?</h3>
+
+        <span class="calc__label" id="lbl-adults">Wie viele Erwachsene?</span>
+        <div class="stepper" role="group" aria-labelledby="lbl-adults">
+          <button type="button" id="a-minus" aria-label="Ein Erwachsener weniger">−</button>
+          <output id="a-out" aria-live="polite">1<small>Erwachsene</small></output>
+          <button type="button" id="a-plus" aria-label="Ein Erwachsener mehr">+</button>
+        </div>
+
+        <span class="calc__label" id="lbl-kids">Wie viele unter 15 Jahren?</span>
+        <div class="stepper" role="group" aria-labelledby="lbl-kids">
+          <button type="button" id="k-minus" aria-label="Eine Person unter 15 weniger">−</button>
+          <output id="k-out" aria-live="polite">0<small>unter 15</small></output>
+          <button type="button" id="k-plus" aria-label="Eine Person unter 15 mehr">+</button>
+        </div>
+
+        <span class="calc__label" id="lbl-games">Wie viele Spiele?</span>
+        <div class="games" role="radiogroup" aria-labelledby="lbl-games" id="games">
+          <button type="button" role="radio" aria-checked="false" data-games="1"><b>1 Spiel</b><span>15 Min.</span><i></i></button>
+          <button type="button" role="radio" aria-checked="true" data-games="2"><em>Beliebt</em><b>2 Spiele</b><span>30 Min.</span><i></i></button>
+          <button type="button" role="radio" aria-checked="false" data-games="3"><em>Bester Preis</em><b>3 Spiele</b><span>45 Min.</span><i></i></button>
+        </div>
+
+        <div class="calc__result" aria-live="polite">
+          <div class="calc__total" id="c-total">42 €</div>
+          <div class="calc__per"><b id="c-per">42 € p. P.</b><span id="c-time">2 Spiele · 30 Min.</span></div>
+          <p class="calc__vat" id="c-vat">Gesamtpreis für 1 Erwachsenen, inkl. MwSt.</p>
+        </div>
+        <a class="btn btn--block btn--book js-book js-track" data-cta="calc_book" id="c-cta" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">
+          <svg><use href="#i-cal"/></svg>Jetzt buchen
+        </a>
+        <p class="calc__more">Mehr als 12 Leute oder Firmenevent? <a class="js-track" data-cta="calc_b2b" href="https://survey.battlekart.com/de/formulier-b2b/?center=duesseldorf-ratingen&amp;countrycode=DEU" target="_blank" rel="noopener">Angebot anfragen</a> oder <a class="js-track" data-cta="calc_mail" href="mailto:info@duesseldorf-ratingen.battlekart.com">E-Mail schreiben</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AUCH FÜR (Anlässe) ================= -->
+<section class="section" aria-labelledby="also-title">
   <div class="wrap">
     <div class="section__head">
       <span class="kicker">Für jeden Anlass</span>
-      <h2 id="occ-title">Mit wem tretet ihr an?</h2>
+      <h2 id="also-title">Auch für</h2>
     </div>
-    <div class="occasions">
-      <article class="card occ" data-occ="freunde">
-        <div class="occ__emoji" aria-hidden="true">🏁</div>
-        <h3>Freunde &amp; Paare</h3>
-        <p>Der Abend, über den ihr noch lange redet. Rennen, Revanche, Siegerehrung – und alle wollen gleich noch eine Runde.</p>
-        <a class="link js-book js-track" data-cta="occ_freunde" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card occ" data-occ="gaming">
-        <div class="occ__emoji" aria-hidden="true">🎮</div>
-        <h3>Gaming-Fans</h3>
-        <p>Raketen, Nitro, Punkte und Power-ups – wie im Videospiel, nur dass du selbst im Kart sitzt.</p>
-        <a class="link js-book js-track" data-cta="occ_gaming" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-    </div>
-    <p class="occasions__label">Auch für</p>
     <div class="occasions occasions--more">
-      <article class="card occ" data-occ="jga">
-        <h3>JGA</h3>
-        <p>Braut oder Bräutigam gegen den Rest – bis zu 12 Fahrer pro Rennen.</p>
-        <a class="link js-book js-track" data-cta="occ_jga" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card occ" data-occ="geburtstag">
-        <h3>Erwachsenengeburtstag</h3>
-        <p>Kart-Battle statt Kneipe. Das Geburtstagskind wählt die Spielmodi.</p>
-        <a class="link js-book js-track" data-cta="occ_geburtstag" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
+      <article class="card occ" data-occ="gutschein">
+        <h3>Gutscheine</h3>
+        <p>Ein Rennen verschenken – den Gutschein gibt es direkt online.</p>
+        <a class="link js-track" data-cta="occ_gutschein" href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards">Gutschein kaufen <svg><use href="#i-arrow"/></svg></a>
       </article>
       <article class="card occ" data-occ="firma">
         <h3>Firmen &amp; Weihnachtsfeier</h3>
         <p>Teambuilding mit echtem Wettbewerb. Größere Gruppen auf Anfrage.</p>
         <a class="link js-track" data-cta="occ_b2b" href="https://survey.battlekart.com/de/formulier-b2b/?center=duesseldorf-ratingen&amp;countrycode=DEU" target="_blank" rel="noopener">Angebot anfragen <svg><use href="#i-arrow"/></svg></a>
       </article>
+      <article class="card occ" data-occ="kindergeburtstag">
+        <h3>Kindergeburtstag</h3>
+        <p>Bring your own Food! Bucht selbst online und meldet euren Geburtstag per <a href="mailto:info@duesseldorf-ratingen.battlekart.com">Mail</a> an. Mitfahren kann jeder ab 1,45&nbsp;m.</p>
+        <a class="link js-book js-track" data-cta="occ_kindergeburtstag" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card occ" data-occ="geburtstag">
+        <h3>Erwachsenengeburtstag</h3>
+        <p>Kart-Battle statt Kneipe. Das Geburtstagskind wählt die Spielmodi.</p>
+        <a class="link js-book js-track" data-cta="occ_geburtstag" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card occ" data-occ="jga">
+        <h3>JGA</h3>
+        <p>Braut oder Bräutigam gegen den Rest – bis zu 12 Fahrer pro Rennen.</p>
+        <a class="link js-book js-track" data-cta="occ_jga" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ================= EVENT-HINWEIS (klein, wechselnd; abgelaufene Events verschwinden automatisch) =================
-     Events stehen im Skript unter EVENTS. Ohne aktuelles Event wird dieser Bereich gar nicht angezeigt. -->
-<section class="events" id="events" aria-label="Nächstes Event" hidden>
-  <div class="wrap" id="events-list"></div>
+<!-- ================= SO FUNKTIONIERT'S ================= -->
+<section class="section section--alt" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="kicker">Warum BattleKart?</span>
+      <h2 id="how-title">Echtes Kart. <span class="hl">Echtes Videospiel.</span></h2>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="step__icon"><svg><use href="#i-kart"/></svg></div>
+        <h3>Echte Elektro-Karts</h3>
+        <p>Du gibst Gas, bremst und lenkst selbst. Kurze Einweisung, Gurt an, los.</p>
+      </article>
+      <article class="step">
+        <div class="step__icon"><svg><use href="#i-bolt"/></svg></div>
+        <h3>Virtuelle Welt</h3>
+        <p>Virtuelle Strecke voller Action – Nitro und Rakete einsammeln, am Lenkrad aktivieren und deine Gegner überlisten.</p>
+      </article>
+      <article class="step">
+        <div class="step__icon"><svg><use href="#i-trophy"/></svg></div>
+        <h3>6 Spielmodi</h3>
+        <p>Rennen, Fußball, Billard, Snake und mehr. Bis zu 3 verschiedene Modi pro Buchung.</p>
+      </article>
+    </div>
+    <p class="notice"><svg><use href="#i-eye"/></svg><span><strong>Kein Simulator, keine VR-Brille.</strong> Das Kart fährt wirklich – du gibst Gas, bremst und lenkst selbst über die virtuelle Rennstrecke.</span></p>
+  </div>
 </section>
 
 <!-- ================= VOR ORT ================= -->
@@ -805,12 +794,11 @@ section { position: relative; }
       <ul class="info-list">
         <li>
           <svg><use href="#i-shield"/></svg>
-          <div><h3>Sicher unterwegs</h3><p>Gedrosselte E-Karts, überwachte Strecke, Einweisung vor jeder Fahrt. Das Anti-Kollisionssystem bremst automatisch – leichte Kontakte sind trotzdem möglich.</p></div>
+          <div><h3>Sicheres Fahrgefühl – ganz ohne Helm</h3><p>Dank betreuter Strecke, klarer Einweisung und intelligenter Fahrtechnik passiert dir nichts.</p></div>
         </li>
-        <!-- ANPASSEN: Gastro-Angebot noch offen. Erst einblenden ("hidden" entfernen), wenn bestätigt ist, was es vor Ort gibt. -->
-        <li hidden>
+        <li>
           <svg><use href="#i-cup"/></svg>
-          <div><h3>Getränke</h3><p>[ANPASSEN: was es vor Ort gibt]</p></div>
+          <div><h3>Getränke</h3><p>Ob heiß oder kalt, für jeden ist etwas dabei.</p></div>
         </li>
         <li>
           <svg><use href="#i-eye"/></svg>
@@ -853,50 +841,116 @@ section { position: relative; }
   </div>
 </section>
 
+<!-- ================= MIT WEM TRETET IHR AN? ================= -->
+<section class="section section--alt" aria-labelledby="occ-title">
+  <div class="wrap">
+    <div class="section__head">
+      <span class="kicker">Zielgruppen</span>
+      <h2 id="occ-title">Mit wem tretet ihr an?</h2>
+    </div>
+    <div class="occasions">
+      <article class="card occ" data-occ="freunde">
+        <div class="occ__emoji" aria-hidden="true">🏁</div>
+        <h3>Freunde &amp; Paare</h3>
+        <p>Der Abend, über den ihr noch lange redet. Rennen, Revanche, Siegerehrung – und alle wollen gleich noch eine Runde.</p>
+        <a class="link js-book js-track" data-cta="occ_freunde" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card occ" data-occ="gaming">
+        <div class="occ__emoji" aria-hidden="true">🎮</div>
+        <h3>Gaming-Fans</h3>
+        <p>Raketen, Nitro, Punkte und Power-ups – wie im Videospiel, nur dass du selbst im Kart sitzt.</p>
+        <a class="link js-book js-track" data-cta="occ_gaming" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EVENT-HINWEIS (klein, wechselnd; abgelaufene Events verschwinden automatisch) =================
+     Events stehen im Skript unter EVENTS. Ohne aktuelles Event wird dieser Bereich gar nicht angezeigt. -->
+<section class="events" id="events" aria-label="Nächstes Event" hidden>
+  <div class="wrap" id="events-list"></div>
+</section>
+
 <!-- ================= FAQ ================= -->
-<section class="section section--alt" aria-labelledby="faq-title">
+<section class="section" aria-labelledby="faq-title">
   <div class="wrap">
     <div class="section__head section__head--center">
       <span class="kicker">FAQ</span>
       <h2 id="faq-title">Gut zu wissen</h2>
     </div>
     <div class="faq">
+      <!-- Fragen und Antworten von der Center-Seite battlekart.com/de/duesseldorf-ratingen übernommen (20.10.2026), Tippfehler korrigiert. -->
       <details>
-        <summary>Ist das nicht eher was für Kinder?</summary>
-        <p>Kein bisschen. Raketen zünden, Nitro timen, Revanche fordern – das macht Erwachsenen genauso viel Spaß wie allen anderen ab 1,45 m. Und danach wird ausdiskutiert, wer wirklich gewonnen hat.</p>
+        <summary>Was ist BattleKart?</summary>
+        <p>BattleKart ist eine Kombination aus Elektro-Kartfahren und Videospiel. Du fährst echte Karts auf einer digitalen Strecke und interagierst mit projizierten Spielwelten – ähnlich wie in einem Videospiel, aber in echt.</p>
       </details>
       <details>
-        <summary>Fährt das Kart wirklich oder sitze ich vor einem Bildschirm?</summary>
-        <p>Es fährt wirklich. Du gibst Gas, bremst und lenkst selbst. Strecke, Boni und Effekte werden von Beamern an der Hallendecke direkt auf den Boden projiziert – eine VR-Brille brauchst du nicht.</p>
+        <summary>Brauche ich Vorkenntnisse oder Erfahrung im Kartfahren?</summary>
+        <p>Nein, BattleKart ist für Anfänger und Fortgeschrittene geeignet. Die Steuerung ist einfach und wird vor Ort erklärt.</p>
       </details>
       <details>
-        <summary>Brauche ich Erfahrung oder einen Führerschein?</summary>
-        <p>Nein. Die Steuerung ist einfach und wird vor jeder Fahrt kurz erklärt. Anfänger und Kart-Profis haben gleich viel Spaß.</p>
+        <summary>Wie lange dauert ein Spiel?</summary>
+        <p>Eine Session dauert 15 Minuten. Die reine Fahrzeit verkürzt sich um die Einweisung.</p>
       </details>
       <details>
         <summary>Gibt es eine Mindestgröße oder ein Mindestalter?</summary>
-        <p>Du musst mindestens 1,45 m groß sein. Ein Mindestalter gibt es nicht. Alle Karts sind Einsitzer.</p>
+        <p>Du musst mindestens 1,45 m groß sein, um mit unseren Karts zu fahren. Ein Mindestalter gibt es nicht.</p>
       </details>
       <details>
-        <summary>Ist das sicher? Brauche ich einen Helm?</summary>
-        <p>Ein Helm ist nicht nötig. Die E-Karts sind gedrosselt, die Strecke wird überwacht, und ein Anti-Kollisionssystem bremst automatisch. Leichte Kontakte sind trotzdem möglich – also Gurt an und fair fahren.</p>
+        <summary>Kann ich mit Brille oder Kontaktlinsen fahren?</summary>
+        <p>Ja, das ist problemlos möglich.</p>
       </details>
       <details>
-        <summary>Wie lange dauert ein Spiel und wie viele fahren mit?</summary>
-        <p>Ein Spiel dauert 15 Minuten, davon etwa 2,5 Minuten für Ein- und Ausstieg. Pro Rennen fahren bis zu 12 Personen. Du kannst auch allein buchen – ist im Slot noch Platz, können weitere Gäste dazukommen. Mehr als 12? Ruf uns an – wir planen das mit euch.</p>
+        <summary>Ist BattleKart körperlich anstrengend?</summary>
+        <p>Nein, es ist eher ein moderates Fahrerlebnis – Spaß und Reaktion stehen im Vordergrund.</p>
       </details>
       <details>
-        <summary>Muss ich vorher buchen?</summary>
-        <p>Wir empfehlen die Online-Buchung, besonders am Wochenende und für Gruppen. Und komm lieber etwas früher: Bei Verspätung können wir die Teilnahme je nach Auslastung nicht garantieren.</p>
+        <summary>Ist BattleKart sicher?</summary>
+        <p>Ja, Sicherheit hat oberste Priorität: Die Karts sind elektrisch und gedrosselt, die Strecke wird überwacht, und vor jeder Fahrt gibt es eine Einweisung.</p>
       </details>
       <details>
-        <summary>Kann ich umbuchen oder stornieren?</summary>
-        <!-- ANPASSEN: Hier eure Umbuchungs-/Stornoregel positiv formulieren (z. B. „Kostenlos umbuchen bis 48 h vorher“) – das senkt die Hemmschwelle deutlich. -->
-        <p>Die genauen Bedingungen siehst du in der Buchung, bevor du bezahlst. Bei Fragen erreichst du uns unter <a href="tel:+492102445500">02102&nbsp;445500</a>.</p>
+        <summary>Kann es zu Zusammenstößen kommen?</summary>
+        <p>Leichte Kontakte sind möglich. Die Karts bremsen in der Regel jedoch vor einem Zusammenstoß automatisch.</p>
       </details>
       <details>
-        <summary>Kann man zuschauen?</summary>
-        <p>Ja. Begleitpersonen können das Rennen in der Halle verfolgen. <!-- ANPASSEN: Getränke/Speisen erst nennen, wenn es sie gibt. --></p>
+        <summary>Wie viele Personen können gleichzeitig spielen?</summary>
+        <p>In unserer Halle können bis zu 12 Spieler gleichzeitig gegeneinander antreten.</p>
+      </details>
+      <details>
+        <summary>Kann ich als Gruppe zusammen spielen?</summary>
+        <p>Ja, BattleKart ist ideal für Gruppen, Firmenevents und Geburtstage.</p>
+      </details>
+      <details>
+        <summary>Muss ich im Voraus buchen?</summary>
+        <p>Wir empfehlen immer die vorherige Onlinebuchung. Insbesondere an Wochenenden und für Gruppen kannst du dir so die Plätze sichern!</p>
+      </details>
+      <details>
+        <summary>Gibt es Gruppenangebote oder Rabatte?</summary>
+        <p>Ja, für Gruppen, Firmen, Vereine und Geburtstage bieten wir extra Angebote an.</p>
+      </details>
+      <details>
+        <summary>Was passiert bei Verspätung?</summary>
+        <p>Je nach Auslastung kann die Teilnahme in dieser Situation nicht garantiert werden. Frühzeitig erscheinen wird also empfohlen!</p>
+      </details>
+      <details>
+        <summary>Was soll ich anziehen?</summary>
+        <p>Bequeme Kleidung und festes Schuhwerk werden empfohlen. Offene Schuhe dürfen nicht getragen werden.</p>
+      </details>
+      <details>
+        <summary>Brauche ich einen Helm?</summary>
+        <p>Nein, unsere Karts haben ein Antikollisionssystem. Damit werden Zusammenstöße vermieden und die Fahrt ist auch ohne Helm sicher.</p>
+      </details>
+      <details>
+        <summary>Ist BattleKart für Teamevents geeignet?</summary>
+        <p>Absolut! Neben Events für Vereine und Unternehmen bieten wir auch Geburtstagspartys an! Auf Nachfrage bieten wir zudem die exklusive Nutzung für größere Gruppen an.</p>
+      </details>
+      <details>
+        <summary>Gibt es Essen und Getränke vor Ort?</summary>
+        <p>Ja, wir haben eine große Auswahl an Kalt- und Heißgetränken. Auch eine kleine Auswahl an Speisen ist bei uns zu finden.</p>
+      </details>
+      <details>
+        <summary>Darf ich nur fahren oder auch zuschauen?</summary>
+        <p>Vom Gastrobereich hast du einen guten Blick auf die Strecke. Aber auch in der Halle selbst gibt es eine Aufenthaltsmöglichkeit, um dem Renngeschehen zu folgen.</p>
       </details>
     </div>
   </div>
