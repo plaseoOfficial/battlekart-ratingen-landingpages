@@ -248,6 +248,7 @@ p { margin: 0; }
 .hero__link:hover { text-decoration-color: #fff; }
 .hero__hint { margin-top: 12px; font-size: .85rem; color: var(--muted); }
 .factbar { position: relative; z-index: 1; margin-top: -8px; padding: 0 0 8px; }
+.hero-clip { display: none; }
 .factbar .facts { margin: 0; justify-content: center; }
 .hero__ticks { margin: 16px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: .9rem; }
 .hero__ticks li { display: inline-flex; align-items: center; gap: 6px; }
@@ -493,6 +494,9 @@ section { position: relative; }
   .factbar .facts li { padding: 10px 12px; }
   .facts { grid-template-columns: repeat(2, 1fr); }
   .factbar { margin-top: 0; }
+  .hero-clip { display: block; padding: 0 0 14px; }
+  .hero-clip__frame { aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--line-strong), 0 12px 30px rgba(0,0,0,.45); }
+  .hero-clip__frame img, .hero-clip__frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
   .facts li:last-child { grid-column: 1 / -1; }
   .occasions, .occasions--more { grid-template-columns: 1fr; }
   .games { grid-template-columns: repeat(3, 1fr); row-gap: 14px; }
@@ -558,10 +562,10 @@ section { position: relative; }
 
 <!-- ================= HERO ================= -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero__media" id="hero-media" data-video="img/hero-ratingen.mp4" data-video-mobile="img/hero-ratingen-mobil.mp4">
-    <!-- VIDEO: Ausschnitt 5,6–18,7 s aus dem BattleKart-Video (YouTube OaUCY5nMAC4), stumm, H.264.
-         Desktop: 1280×468, 1,9 MB, startet sofort. Handy: Bildmitte 560×468, 0,75 MB, lädt erst nach einem
-         kleinen Scroll nach unten (Svens Vorgabe 20.10.2026).
+  <div class="hero__media" id="hero-media" data-video="img/hero-ratingen.mp4">
+    <!-- VIDEO (nur Desktop als Hintergrund): Ausschnitt 6,9–18,7 s aus dem BattleKart-Video (YouTube OaUCY5nMAC4),
+         stumm, H.264, 1280×468, 1,7 MB, startet sofort. Auf dem Handy bleibt hier das Bild, das Video steht
+         als eigener Block unter dem Hero (siehe HERO-VIDEO HANDY).
          Das Bild bleibt Vorschau und Ersatz (langsames Netz, Datensparmodus, reduzierte Bewegung). -->
     <img src="img/battlekart-strecke.webp" alt="Spieler in E-Karts fahren über die projizierte, neonfarbene Spielstrecke bei BattleKart" width="1200" height="800" fetchpriority="high">
   </div>
@@ -584,6 +588,17 @@ section { position: relative; }
     </div>
   </div>
 </section>
+
+<!-- ================= HERO-VIDEO HANDY (nur bis 720 px Breite) =================
+     Eigener Block unter dem Hero statt Hintergrund (Svens Vorgabe 20.10.2026). 16:9, 640×360, 1 MB.
+     Zuerst nur das Vorschaubild; das Video lädt erst nach einem kleinen Scroll nach unten. -->
+<div class="hero-clip" id="hero-clip" data-video="img/hero-ratingen-mobil.mp4">
+  <div class="wrap">
+    <div class="hero-clip__frame">
+      <img src="img/hero-ratingen-mobil.webp" alt="E-Karts fahren über die projizierte Spielstrecke bei BattleKart" width="640" height="360" loading="lazy" decoding="async">
+    </div>
+  </div>
+</div>
 
 <!-- ================= FAKTEN-LEISTE ================= -->
 <div class="factbar">
@@ -1189,29 +1204,30 @@ section { position: relative; }
   onScroll();
 })();
 
-/* ---------- Hero-Video: lädt nur, wenn eine Datei eingetragen ist und das Gerät es verträgt.
-   Desktop startet sofort, auf dem Handy erst nach einem kleinen Scroll nach unten. ---------- */
+/* ---------- Hero-Video: lädt nur, wenn das Gerät es verträgt.
+   Desktop: Hintergrund im Hero, startet sofort. Handy: eigener Block unter dem Hero, lädt erst nach einem kleinen Scroll. ---------- */
 (function () {
-  var m = document.getElementById('hero-media');
-  if (!m) return;
-  var mobil = matchMedia('(max-width: 720px)').matches;
-  var src = (mobil && m.getAttribute('data-video-mobile')) || m.getAttribute('data-video');
-  if (!src) return;
   var c = navigator.connection || {};
   if (c.saveData || /(^|-)2g$/.test(c.effectiveType || '') || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  function start() {
-    var img = m.querySelector('img'), v = document.createElement('video');
+  function start(box, src) {
+    if (!box || !src) return;
+    var img = box.querySelector('img'), v = document.createElement('video');
     v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.setAttribute('playsinline', '');
     v.setAttribute('aria-hidden', 'true'); v.preload = 'auto'; if (img) v.poster = img.currentSrc || img.src;
     v.src = src;
-    v.addEventListener('canplay', function () { if (img) img.replaceWith(v); else m.appendChild(v); v.play().catch(function () {}); }, { once: true });
+    v.addEventListener('canplay', function () { if (img) img.replaceWith(v); else box.appendChild(v); v.play().catch(function () {}); }, { once: true });
     v.load();
   }
-  if (!mobil) return start();
+  if (!matchMedia('(max-width: 720px)').matches) {
+    var hero = document.getElementById('hero-media');
+    return start(hero, hero && hero.getAttribute('data-video'));
+  }
+  var clip = document.getElementById('hero-clip');
+  if (!clip) return;
   function onScroll() {
     if (window.scrollY < 40) return;
     window.removeEventListener('scroll', onScroll);
-    start();
+    start(clip.querySelector('.hero-clip__frame'), clip.getAttribute('data-video'));
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
