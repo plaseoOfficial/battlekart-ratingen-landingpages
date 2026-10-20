@@ -495,7 +495,23 @@ section { position: relative; }
   .facts { grid-template-columns: repeat(2, 1fr); }
   .factbar { margin-top: 0; }
   .hero-clip { display: block; padding: 0 0 14px; }
-  .hero-clip__frame { aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--line-strong), 0 12px 30px rgba(0,0,0,.45); }
+  .hero-clip__frame { position: relative; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 0 0 1px var(--line-strong), 0 12px 30px rgba(0,0,0,.45); }
+  /* Play-Knopf im Stil von "Jetzt buchen": orange Verlauf, gelber Ring, Glanz. Verschwindet, sobald das Video läuft. */
+  .clip-play {
+    position: absolute; left: 50%; top: 50%; z-index: 1; width: 78px; height: 78px; padding: 0; border: 0; border-radius: 50%;
+    display: grid; place-items: center; overflow: hidden; isolation: isolate; cursor: pointer; color: #fff;
+    background: linear-gradient(180deg, #FF8A3D 0%, var(--orange) 52%, #CC4510 100%);
+    box-shadow: 0 0 0 4px rgba(255, 194, 26, .4), 0 14px 34px -6px rgba(234, 88, 26, .9), inset 0 2px 0 rgba(255, 255, 255, .3), inset 0 -4px 0 rgba(0, 0, 0, .24);
+    transform: translate(-50%, -50%); transition: opacity .25s ease, transform .25s ease;
+  }
+  .clip-play::after {
+    content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -70%; width: 45%;
+    background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, .45) 50%, transparent 100%);
+    transform: skewX(-20deg); animation: shine 4s ease-in-out infinite;
+  }
+  .clip-play svg { width: 34px; height: 34px; margin-left: 5px; filter: drop-shadow(0 2px 0 rgba(120, 30, 0, .45)); }
+  .clip-play:active { transform: translate(-50%, -50%) scale(.94); }
+  .hero-clip.is-playing .clip-play { opacity: 0; pointer-events: none; transform: translate(-50%, -50%) scale(.8); }
   .hero-clip__frame img, .hero-clip__frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
   .facts li:last-child { grid-column: 1 / -1; }
   .occasions, .occasions--more { grid-template-columns: 1fr; }
@@ -538,6 +554,7 @@ section { position: relative; }
   <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></g></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
   <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0v-4l2-5h18l2 5v4a2 2 0 1 1-4 0"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></g></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
 </svg>
 
@@ -591,11 +608,12 @@ section { position: relative; }
 
 <!-- ================= HERO-VIDEO HANDY (nur bis 720 px Breite) =================
      Eigener Block unter dem Hero statt Hintergrund (Svens Vorgabe 20.10.2026). 16:9, 640×360, 1 MB.
-     Zuerst nur das Vorschaubild; das Video lädt erst nach einem kleinen Scroll nach unten. -->
+     Zuerst Vorschaubild mit Play-Knopf; das Video startet nach einem kleinen Scroll von selbst oder sofort per Knopf. -->
 <div class="hero-clip" id="hero-clip" data-video="img/hero-ratingen-mobil.mp4">
   <div class="wrap">
     <div class="hero-clip__frame">
       <img src="img/hero-ratingen-mobil.webp" alt="E-Karts fahren über die projizierte Spielstrecke bei BattleKart" width="640" height="360" loading="lazy" decoding="async">
+      <button type="button" class="clip-play" id="clip-play" aria-label="Video abspielen"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
     </div>
   </div>
 </div>
@@ -1205,29 +1223,45 @@ section { position: relative; }
 })();
 
 /* ---------- Hero-Video: lädt nur, wenn das Gerät es verträgt.
-   Desktop: Hintergrund im Hero, startet sofort. Handy: eigener Block unter dem Hero, lädt erst nach einem kleinen Scroll. ---------- */
+   Desktop: Hintergrund im Hero, startet sofort. Handy: eigener Block unter dem Hero mit Play-Knopf.
+   Das Video startet nach einem kleinen Scroll von selbst oder sofort per Knopf; Tippen aufs laufende Video pausiert. ---------- */
 (function () {
   var c = navigator.connection || {};
-  if (c.saveData || /(^|-)2g$/.test(c.effectiveType || '') || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var sparen = c.saveData || /(^|-)2g$/.test(c.effectiveType || '') || matchMedia('(prefers-reduced-motion: reduce)').matches;
   function start(box, src) {
-    if (!box || !src) return;
     var img = box.querySelector('img'), v = document.createElement('video');
     v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.setAttribute('playsinline', '');
     v.setAttribute('aria-hidden', 'true'); v.preload = 'auto'; if (img) v.poster = img.currentSrc || img.src;
     v.src = src;
-    v.addEventListener('canplay', function () { if (img) img.replaceWith(v); else box.appendChild(v); v.play().catch(function () {}); }, { once: true });
+    v.addEventListener('canplay', function () { if (img) img.replaceWith(v); else box.insertBefore(v, box.firstChild); v.play().catch(function () {}); }, { once: true });
     v.load();
+    return v;
   }
   if (!matchMedia('(max-width: 720px)').matches) {
-    var hero = document.getElementById('hero-media');
-    return start(hero, hero && hero.getAttribute('data-video'));
+    var hero = document.getElementById('hero-media'), hsrc = hero && hero.getAttribute('data-video');
+    if (hero && hsrc && !sparen) start(hero, hsrc);
+    return;
   }
   var clip = document.getElementById('hero-clip');
   if (!clip) return;
+  var frame = clip.querySelector('.hero-clip__frame'), btn = document.getElementById('clip-play');
+  var src = clip.getAttribute('data-video'), v = null;
+  function abspielen() {
+    if (!v) {
+      v = start(frame, src);
+      v.addEventListener('playing', function () { clip.classList.add('is-playing'); btn.setAttribute('aria-label', 'Video pausieren'); });
+      v.addEventListener('pause', function () { clip.classList.remove('is-playing'); btn.setAttribute('aria-label', 'Video abspielen'); });
+    } else if (v.paused) {
+      v.play().catch(function () {});
+    }
+  }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); abspielen(); });
+  frame.addEventListener('click', function () { if (v && !v.paused) v.pause(); });
+  if (sparen) return; /* Datensparmodus usw.: nur per Knopf */
   function onScroll() {
     if (window.scrollY < 40) return;
     window.removeEventListener('scroll', onScroll);
-    start(clip.querySelector('.hero-clip__frame'), clip.getAttribute('data-video'));
+    abspielen();
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
