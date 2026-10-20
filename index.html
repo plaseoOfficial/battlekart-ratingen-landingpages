@@ -558,9 +558,10 @@ section { position: relative; }
 
 <!-- ================= HERO ================= -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero__media" id="hero-media" data-video="">
-    <!-- VIDEO: 10–20 s echtes Material aus Ratingen, stumm, MP4 (H.264), < 2 MB, 1280 px breit.
-         Datei nach img/hero-ratingen.mp4 legen und oben data-video="img/hero-ratingen.mp4" setzen.
+  <div class="hero__media" id="hero-media" data-video="img/hero-ratingen.mp4" data-video-mobile="img/hero-ratingen-mobil.mp4">
+    <!-- VIDEO: Ausschnitt 5,6–18,7 s aus dem BattleKart-Video (YouTube OaUCY5nMAC4), stumm, H.264.
+         Desktop: 1280×468, 1,9 MB, startet sofort. Handy: Bildmitte 560×468, 0,75 MB, lädt erst nach einem
+         kleinen Scroll nach unten (Svens Vorgabe 20.10.2026).
          Das Bild bleibt Vorschau und Ersatz (langsames Netz, Datensparmodus, reduzierte Bewegung). -->
     <img src="img/battlekart-strecke.webp" alt="Spieler in E-Karts fahren über die projizierte, neonfarbene Spielstrecke bei BattleKart" width="1200" height="800" fetchpriority="high">
   </div>
@@ -1188,18 +1189,32 @@ section { position: relative; }
   onScroll();
 })();
 
-/* ---------- Hero-Video: lädt nur, wenn eine Datei eingetragen ist und das Gerät es verträgt ---------- */
+/* ---------- Hero-Video: lädt nur, wenn eine Datei eingetragen ist und das Gerät es verträgt.
+   Desktop startet sofort, auf dem Handy erst nach einem kleinen Scroll nach unten. ---------- */
 (function () {
-  var m = document.getElementById('hero-media'), src = m && m.getAttribute('data-video');
+  var m = document.getElementById('hero-media');
+  if (!m) return;
+  var mobil = matchMedia('(max-width: 720px)').matches;
+  var src = (mobil && m.getAttribute('data-video-mobile')) || m.getAttribute('data-video');
   if (!src) return;
   var c = navigator.connection || {};
   if (c.saveData || /(^|-)2g$/.test(c.effectiveType || '') || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var img = m.querySelector('img'), v = document.createElement('video');
-  v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.setAttribute('playsinline', '');
-  v.setAttribute('aria-hidden', 'true'); v.preload = 'auto'; if (img) v.poster = img.currentSrc || img.src;
-  v.src = src;
-  v.addEventListener('canplay', function () { if (img) img.replaceWith(v); else m.appendChild(v); v.play().catch(function () {}); }, { once: true });
-  v.load();
+  function start() {
+    var img = m.querySelector('img'), v = document.createElement('video');
+    v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.setAttribute('playsinline', '');
+    v.setAttribute('aria-hidden', 'true'); v.preload = 'auto'; if (img) v.poster = img.currentSrc || img.src;
+    v.src = src;
+    v.addEventListener('canplay', function () { if (img) img.replaceWith(v); else m.appendChild(v); v.play().catch(function () {}); }, { once: true });
+    v.load();
+  }
+  if (!mobil) return start();
+  function onScroll() {
+    if (window.scrollY < 40) return;
+    window.removeEventListener('scroll', onScroll);
+    start();
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();
 
 /* ---------- Event-Hinweis: höchstens 2 kommende Events, abgelaufene verschwinden automatisch ----------
