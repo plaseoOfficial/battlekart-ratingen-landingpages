@@ -1210,6 +1210,45 @@ section { position: relative; }
     gtag('event', 'conversion', { send_to: BK_ADS.id + '/' + BK_ADS[art], transport_type: 'beacon' });
   });
 
+  /* ---------- Eigener Zähler ohne Cookies (Dashboard reports.plaseo.de/battlekart) ----------
+     Zählt Besuche und Klicks auch ohne Einwilligung: speichert nichts im Browser, schickt keine Klick-ID,
+     der Server legt nur Summen je Tag ab (keine IP, kein Browser). */
+  var ZAEHLER = 'https://reports.plaseo.de/eingang/klick';
+  function quelle() {
+    if (q.get('utm_source')) return q.get('utm_source');
+    if (q.get('gclid') || q.get('gbraid') || q.get('wbraid')) return 'google';
+    var r = document.referrer;
+    if (!r) return 'direkt';
+    try { r = new URL(r).hostname; } catch (e) { return 'verweis'; }
+    if (/(^|\.)google\./.test(r)) return 'google-suche';
+    if (/instagram|facebook|tiktok/.test(r)) return 'social';
+    if (/battlekart\.com$/.test(r)) return 'battlekart.com';
+    return r === location.hostname ? 'intern' : 'verweis';
+  }
+  var herkunft = quelle();
+  function zaehle(art, cta) {
+    try {
+      var d = JSON.stringify({ art: art, cta: cta || '', quelle: herkunft, kampagne: q.get('utm_campaign') || '',
+        gruppe: q.get('utm_content') || '', keyword: q.get('utm_term') || '', anlass: occ || '',
+        gclid: (q.get('gclid') || q.get('gbraid') || q.get('wbraid')) ? 1 : 0 });
+      if (navigator.sendBeacon) navigator.sendBeacon(ZAEHLER, new Blob([d], { type: 'text/plain' }));
+      else fetch(ZAEHLER, { method: 'POST', body: d, keepalive: true, mode: 'no-cors' });
+    } catch (e) {}
+  }
+  zaehle('besuch');
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '', art = null;
+    if (a.classList.contains('js-book')) art = 'buchen';
+    else if (href.indexOf('tel:') === 0) art = 'anruf';
+    else if (href.indexOf('formulier-b2b') > -1) art = 'anfrage';
+    else if (href.indexOf('google.com/maps') > -1) art = 'route';
+    else if (href.indexOf('giftcards') > -1) art = 'gutschein';
+    else if (href.indexOf('mailto:') === 0) art = 'mail';
+    if (art) zaehle(art, a.dataset.cta);
+  });
+
   /* ---------- Header + mobile Buchungsleiste ---------- */
   var header = $('header'), bar = $('bookbar'), heroCta = $('hero-cta');
   /* Leiste erscheint, sobald die Hero-Buttons aus dem Bild gescrollt sind */
