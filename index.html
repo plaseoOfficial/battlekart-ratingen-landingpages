@@ -1226,7 +1226,12 @@ section { position: relative; }
     return r === location.hostname ? 'intern' : 'verweis';
   }
   var herkunft = quelle();
+  /* Echtheit: automatisierte Browser zählen nicht. Jede Aktion zählt höchstens einmal je Seitenaufruf
+     (wie Google »Eine Conversion je Klick«), nur im Speicher der Seite, nichts im Browser abgelegt. */
+  var robot = navigator.webdriver === true, schonGezaehlt = {};
   function zaehle(art, cta) {
+    if (robot || schonGezaehlt[art]) return;
+    schonGezaehlt[art] = true;
     try {
       var d = JSON.stringify({ art: art, cta: cta || '', quelle: herkunft, kampagne: q.get('utm_campaign') || '',
         gruppe: q.get('utm_content') || '', keyword: q.get('utm_term') || '', anlass: occ || '',
@@ -1238,7 +1243,7 @@ section { position: relative; }
   zaehle('besuch');
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href]');
-    if (!a) return;
+    if (!a || !e.isTrusted) return;
     var href = a.getAttribute('href') || '', art = null;
     if (a.classList.contains('js-book')) art = 'buchen';
     else if (href.indexOf('tel:') === 0) art = 'anruf';
