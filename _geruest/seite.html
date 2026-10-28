@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--
+  GERÜST FÜR UNTERSEITEN (/<slug>/index.html) – nicht von Hand kopieren, sondern bauen lassen:
+    node werkzeuge/bauen.mjs --slug <slug> --quelle <tamys-datei.html>
+  Platzhalter in doppelten geschweiften Klammern: TITEL, BESCHREIBUNG, PFAD (z. B. /gutschein/), INHALT.
+  Kopf, Header, Footer, Buchungsleiste, Tracking und Einwilligung kommen immer von hier, aus Tamys Datei nur der Inhalt.
+  Tracking und Einwilligung sind aus index.html übernommen (Stand 28.10.2026): Änderungen dort hier nachziehen.
+-->
+<title>{{TITEL}}</title>
+<meta name="description" content="{{BESCHREIBUNG}}">
+<!-- Unterseiten sollen in die Google-Suche (anders als die Ads-Landingpage index.html mit noindex). -->
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://battlekart-ratingen.de{{PFAD}}">
+<meta name="theme-color" content="#0D0A18">
+<link rel="icon" type="image/png" href="/img/logo-bk.png">
+<meta property="og:title" content="{{TITEL}}">
+<meta property="og:description" content="{{BESCHREIBUNG}}">
+<meta property="og:url" content="https://battlekart-ratingen.de{{PFAD}}">
+<meta property="og:image" content="https://battlekart-ratingen.de/img/battlekart-strecke.webp">
+<meta property="og:locale" content="de_DE">
+
+<!-- Schriften lokal (DSGVO), Grobold steckt eingebettet in /css/seite.css -->
+<link rel="stylesheet" href="/fonts/fonts.css">
+<!-- ================= EINWILLIGUNG + GOOGLE-ADS-TAG (wie index.html) =================
+  Google Consent Mode v2: Standard ist "abgelehnt". gtag.js lädt erst nach Klick auf "Akzeptieren".
+  Konto 771-480-0041 "Battlekart Ratingen", Google-Tag AW-18486708769. Labels wie in index.html:
+    buchen  = Klick auf einen "Jetzt buchen"-Knopf (alle a.js-book)
+    anruf   = Klick auf eine Telefonnummer (alle tel:-Links)
+    anfrage = Klick auf "Angebot anfragen" (Firmenformular von BattleKart) -->
+<script>
+  window.BK_ADS = { id: 'AW-18486708769', buchen: 'rdIgCPrr-qIdEKGUk-9E', anruf: '-xwJCMr59aIdEKGUk-9E', anfrage: '67EsCKnR-KIdEKGUk-9E' };
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
+  window.bkLoadTag = function () {
+    if (window.bkTagLoaded) return;
+    window.bkTagLoaded = true;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(BK_ADS.id);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', BK_ADS.id);
+  };
+  (function () {
+    var c = null; try { c = localStorage.getItem('bk_consent'); } catch (e) {}
+    if (c === 'granted') {
+      gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' });
+      bkLoadTag();
+    }
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EntertainmentBusiness",
+  "name": "BattleKart Düsseldorf-Ratingen",
+  "image": "https://battlekart-ratingen.de/img/battlekart-strecke.webp",
+  "url": "https://battlekart-ratingen.de/",
+  "email": "info@duesseldorf-ratingen.battlekart.com",
+  "telephone": "+49 2102 445500",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Sunday"], "opens": "10:00", "closes": "21:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "15:00", "closes": "22:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "22:00" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Halskestraße 18",
+    "postalCode": "40880",
+    "addressLocality": "Ratingen",
+    "addressCountry": "DE"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 51.305046, "longitude": 6.836556 }
+}
+</script>
+
+<!-- Gemeinsames CSS (Kopie aus index.html ohne Hero, Video und Preisrechner). Tamys <style> steht im Inhalt und gewinnt bei Gleichstand. -->
+<link rel="stylesheet" href="/css/seite.css">
+</head>
+<body>
+
+<!-- SVG-Icons (wie index.html, nutzbar im Inhalt: <svg><use href="#i-cal"/></svg>) -->
+<!-- SVG-Icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-kart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 17h7M3 14l2-5h6l2 3h5l3 2M11 9V6h3"/></g></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></g></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
+  <symbol id="i-cup" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8zM6 2v3M10 2v3M14 2v3"/></g></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0v-4l2-5h18l2 5v4a2 2 0 1 1-4 0"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></g></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+</svg>
+
+<!-- ================= HEADER (bewusst ohne Menü: ein Ziel = Buchung) ================= -->
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="BattleKart Düsseldorf-Ratingen – zur Startseite">
+      <img src="/img/logo-bk.png" alt="BattleKart" width="64" height="48">
+      <span>Düsseldorf-<br>Ratingen</span>
+    </a>
+    <div class="header__actions">
+      <a class="header__phone js-track" data-cta="header_phone" href="tel:+492102445500" aria-label="Anrufen: 02102 445500">
+        <svg><use href="#i-phone"/></svg><span class="txt">02102&nbsp;445500</span>
+      </a>
+      <a class="btn btn--sm btn--book js-book js-track" data-cta="header_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= INHALT (aus Tamys Datei, ohne Skripte, Header und Footer) ================= -->
+<main id="top">
+{{INHALT}}
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <p>BattleKart Düsseldorf-Ratingen · Halskestraße 18 · 40880 Ratingen</p>
+    <!-- Impressum, AGB und Datenschutz verweisen auf battlekart.com (Bens Vorgabe 20.10.2026). -->
+    <nav aria-label="Rechtliches">
+      <a href="https://www.battlekart.com/de/terms" target="_blank" rel="noopener">Impressum &amp; AGB</a>
+      <a href="https://www.battlekart.com/de/privacy-policy" target="_blank" rel="noopener">Datenschutz</a>
+      <a href="#" data-consent-open>Cookie-Einstellungen</a>
+      <a href="https://www.battlekart.com/de/duesseldorf-ratingen">Center-Seite</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ================= MOBILE BUCHUNGSLEISTE ================= -->
+<div class="bookbar" id="bookbar">
+  <a class="icon-btn js-track" data-cta="bar_phone" href="tel:+492102445500" aria-label="Anrufen"><svg><use href="#i-phone"/></svg></a>
+  <a class="icon-btn js-track" data-cta="bar_route" href="https://www.google.com/maps/dir/?api=1&amp;destination=51.305046,6.836556" target="_blank" rel="noopener" aria-label="Route planen"><svg><use href="#i-pin"/></svg></a>
+  <a class="btn btn--book js-book js-track" data-cta="bar_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1"><svg><use href="#i-cal"/></svg>Jetzt buchen</a>
+</div>
+
+<script>
+/* =========================================================
+   BattleKart Düsseldorf-Ratingen – Unterseiten
+   Wie index.html: Klick-IDs an Buchungslinks, dataLayer, Ads-Conversions, eigener Zähler,
+   Header + Buchungsleiste, Öffnungszeiten. Bewusst NICHT: Preisrechner, Preis-Tabs,
+   Anlass-Varianten (?anlass=), Hero-Video, Event-Hinweis.
+   Der Inhalt kommt frei von Tamy, deshalb prüft jeder Teil, ob seine Elemente da sind.
+   ========================================================= */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var q = new URLSearchParams(location.search);
+  var seite = location.pathname;   // z. B. "/gutschein/"
+
+  /* ---------- Google-Ads-Klick-IDs & UTMs an die Buchungsseite weiterreichen ---------- */
+  var KEEP = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  var pass = KEEP.filter(function (k) { return q.get(k); });
+  if (pass.length) {
+    document.querySelectorAll('a.js-book').forEach(function (a) {
+      try {
+        var u = new URL(a.href);
+        pass.forEach(function (k) { u.searchParams.set(k, q.get(k)); });
+        a.href = u.toString();
+      } catch (e) {}
+    });
+  }
+
+  /* ---------- Klick-Events in den dataLayer (welcher Knopf, welche Seite) ---------- */
+  window.dataLayer = window.dataLayer || [];
+  document.querySelectorAll('.js-track').forEach(function (a) {
+    a.addEventListener('click', function () {
+      window.dataLayer.push({ event: 'lp_cta_click', lp_cta: a.dataset.cta || '', lp_seite: seite });
+    });
+  });
+
+  /* ---------- Google-Ads-Conversions (nur mit Einwilligung und eingetragenem Label, siehe BK_ADS oben) ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || !window.bkTagLoaded || !window.BK_ADS) return;
+    var href = a.getAttribute('href') || '', art = null;
+    if (a.classList.contains('js-book')) art = 'buchen';
+    else if (href.indexOf('tel:') === 0) art = 'anruf';
+    else if (href.indexOf('formulier-b2b') > -1) art = 'anfrage';
+    if (!art || !BK_ADS[art]) return;
+    gtag('event', 'conversion', { send_to: BK_ADS.id + '/' + BK_ADS[art], transport_type: 'beacon' });
+  });
+
+  /* ---------- Eigener Zähler ohne Cookies (Dashboard reports.plaseo.de/battlekart) ----------
+     Wie index.html: speichert nichts im Browser, schickt keine Klick-ID, der Server legt nur Summen je Tag ab.
+     SEITE: Die Annahmestelle (reports.plaseo.de/eingang/klick) hat kein Feld für die Seite. Sie unterscheidet
+     nur über »anlass« (leer = Startseite, sonst die ?anlass=-Variante der Anzeige). Unterseiten schicken deshalb
+     ihren Pfad als anlass, z. B. "/gutschein/", und landen so nicht in den Zahlen der Startseite. */
+  var ZAEHLER = 'https://reports.plaseo.de/eingang/klick';
+  function quelle() {
+    if (q.get('utm_source')) return q.get('utm_source');
+    if (q.get('gclid') || q.get('gbraid') || q.get('wbraid')) return 'google';
+    var r = document.referrer;
+    if (!r) return 'direkt';
+    try { r = new URL(r).hostname; } catch (e) { return 'verweis'; }
+    if (/(^|\.)google\./.test(r)) return 'google-suche';
+    if (/instagram|facebook|tiktok/.test(r)) return 'social';
+    if (/battlekart\.com$/.test(r)) return 'battlekart.com';
+    return r === location.hostname ? 'intern' : 'verweis';
+  }
+  var herkunft = quelle();
+  /* Echtheit: automatisierte Browser zählen nicht. Jede Aktion zählt höchstens einmal je Seitenaufruf. */
+  var robot = navigator.webdriver === true, schonGezaehlt = {};
+  function zaehle(art, cta) {
+    if (robot || schonGezaehlt[art]) return;
+    schonGezaehlt[art] = true;
+    try {
+      var d = JSON.stringify({ art: art, cta: cta || '', quelle: herkunft, kampagne: q.get('utm_campaign') || '',
+        gruppe: q.get('utm_content') || '', keyword: q.get('utm_term') || '', anlass: seite,
+        gclid: (q.get('gclid') || q.get('gbraid') || q.get('wbraid')) ? 1 : 0 });
+      if (navigator.sendBeacon) navigator.sendBeacon(ZAEHLER, new Blob([d], { type: 'text/plain' }));
+      else fetch(ZAEHLER, { method: 'POST', body: d, keepalive: true, mode: 'no-cors' });
+    } catch (e) {}
+  }
+  zaehle('besuch');
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || !e.isTrusted) return;
+    var href = a.getAttribute('href') || '', art = null;
+    if (a.classList.contains('js-book')) art = 'buchen';
+    else if (href.indexOf('tel:') === 0) art = 'anruf';
+    else if (href.indexOf('formulier-b2b') > -1) art = 'anfrage';
+    else if (href.indexOf('google.com/maps') > -1) art = 'route';
+    else if (href.indexOf('giftcards') > -1) art = 'gutschein';
+    else if (href.indexOf('mailto:') === 0) art = 'mail';
+    if (art) zaehle(art, a.dataset.cta);
+  });
+
+  /* ---------- Header + mobile Buchungsleiste ---------- */
+  /* Ohne Hero erscheint die Leiste nach einer halben Bildschirmhöhe. Hat der Inhalt einen #hero-cta
+     (wie die Startseite), erscheint sie wie dort, sobald diese Buttons aus dem Bild gescrollt sind. */
+  var header = $('header'), bar = $('bookbar'), heroCta = $('hero-cta');
+  function onScroll() {
+    if (header) header.classList.toggle('is-solid', window.scrollY > 24);
+    if (bar) bar.classList.toggle('is-visible', heroCta ? heroCta.getBoundingClientRect().bottom < 0 : window.scrollY > window.innerHeight * 0.5);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ---------- Öffnungszeiten: "Heute geöffnet bis …" (Uhrzeit Europe/Berlin) ----------
+   Füllt im Inhalt <span id="today-open"></span> bzw. <span id="hero-open"></span>, wenn vorhanden (wie index.html). */
+(function () {
+  // 0 = Sonntag … 6 = Samstag: [öffnet, schließt] in Stunden (Google-Profil, Stand 16.10.2026)
+  var OPEN = { 0: [10, 21], 1: [10, 21], 2: [10, 21], 3: [10, 21], 4: [10, 21], 5: [15, 22], 6: [10, 22] };
+  var a = document.getElementById('hero-open'), b = document.getElementById('today-open');
+  if (!a && !b) return;
+  var now = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
+  var o = OPEN[now.getDay()], h = now.getHours() + now.getMinutes() / 60, txt = '';
+  if (o && h >= o[0] && h < o[1]) txt = 'Heute geöffnet bis ' + o[1] + ' Uhr · ';
+  else if (o && h < o[0]) txt = 'Heute ab ' + o[0] + ' Uhr geöffnet · ';
+  if (!txt) return;
+  if (a) a.textContent = txt;
+  if (b) { b.textContent = txt.replace(' · ', '') + ' · '; b.style.fontWeight = '800'; }
+})();
+</script>
+
+<!-- ================= COOKIE-BANNER (beide Knöpfe gleich stark, wie von Datenschutzbehörden gefordert) ================= -->
+<div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
+  <p>Dürfen wir mit Cookies von Google messen, ob unsere Anzeigen zu Buchungen führen? <a href="https://www.battlekart.com/de/privacy-policy" target="_blank" rel="noopener">Mehr</a></p>
+  <div class="consent__btns">
+    <button type="button" data-consent="denied">Ablehnen</button>
+    <button type="button" data-consent="granted">Akzeptieren</button>
+  </div>
+</div>
+<script>
+(function () {
+  var box = document.getElementById('consent');
+  if (!box) return;
+  var saved = null; try { saved = localStorage.getItem('bk_consent'); } catch (e) {}
+  if (!saved) box.hidden = false;
+  box.querySelectorAll('[data-consent]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-consent');
+      try { localStorage.setItem('bk_consent', v); } catch (e) {}
+      gtag('consent', 'update', { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+      if (v === 'granted') bkLoadTag();
+      box.hidden = true;
+    });
+  });
+  document.querySelectorAll('[data-consent-open]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); box.hidden = false; });
+  });
+})();
+</script>
+</body>
+</html>
