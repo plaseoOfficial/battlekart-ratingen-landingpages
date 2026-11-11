@@ -3,25 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>BattleKart Ratingen – Kartfahren wie im Videospiel | Jetzt buchen</title>
-<meta name="description" content="Echte E-Karts, projizierte Spielwelten, Raketen &amp; Nitro: BattleKart in Ratingen bei Düsseldorf. 15 Minuten ab 22 € p. P. inkl. MwSt. – jetzt buchen.">
-<!-- Ads-Landingpage: nicht indexieren, damit sie der Center-Seite auf battlekart.com keine Konkurrenz in der organischen Suche macht. Google Ads crawlt die Seite trotzdem. -->
+<title>Kart-Gutschein verschenken | BattleKart Düsseldorf-Ratingen</title>
+<meta name="description" content="Gutschein fürs Kartfahren bei BattleKart Düsseldorf-Ratingen: Betrag frei wählen, sofort als PDF per E-Mail, mit persönlicher Nachricht.">
+<!-- Gutschein-Landingpage nur für Google Ads (Karte »Gutschein - Ads«, Stand 11.11.2026): nicht indexieren. -->
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#0D0A18">
-<link rel="icon" type="image/png" href="img/logo-bk.png">
-<meta property="og:title" content="BattleKart Ratingen – Kartfahren wie im Videospiel">
-<meta property="og:description" content="Echte E-Karts, projizierte Spielwelten, Raketen &amp; Nitro. Ab 1 Person buchbar, 15 Minuten, ab 1,45 m.">
-<meta property="og:url" content="https://battlekart-ratingen.de/">
+<link rel="icon" type="image/png" href="/img/logo-bk.png">
+<meta property="og:title" content="Kart-Gutschein verschenken | BattleKart Düsseldorf-Ratingen">
+<meta property="og:description" content="Echte E-Karts in einer virtuellen Spielwelt. Betrag frei wählen, sofort als PDF per E-Mail.">
+<meta property="og:url" content="https://battlekart-ratingen.de/ga/gutscheine/">
 <meta property="og:image" content="https://battlekart-ratingen.de/img/battlekart-strecke.webp">
 <meta property="og:locale" content="de_DE">
-
-<!--
-  SCHRIFTEN
-  - Grobold (Markenschrift) ist unten eingebettet. Korrigiert 15.10.2026: Laufweite von »ä« und »!« (Fehler in der Originaldatei).
-    Der Datei fehlen ö ü ß Ä Ö € „ und –. Wie auf battlekart.com ("grobold-lalezar") füllt Lalezar diese Zeichen auf.
-  - Lalezar + Noto Sans liegen lokal in ./fonts/ (fonts.css), kein Abruf bei Google mehr (DSGVO). Erledigt 15.10.2026.
--->
-<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <!-- ================= EINWILLIGUNG + GOOGLE-ADS-TAG =================
   Google Consent Mode v2: Standard ist "abgelehnt". Der Google-Tag (gtag.js) wird erst nach Klick auf
   "Akzeptieren" geladen, vorher geht keine Anfrage an Google.
@@ -32,7 +25,8 @@
     anruf   = Klick auf eine Telefonnummer (alle tel:-Links)
     anfrage = Klick auf "Angebot anfragen" (Firmenformular von BattleKart) -->
 <script>
-  window.BK_ADS = { id: 'AW-18486708769', buchen: 'rdIgCPrr-qIdEKGUk-9E', anruf: '-xwJCMr59aIdEKGUk-9E', anfrage: '67EsCKnR-KIdEKGUk-9E' };
+  window.BK_ADS = { id: 'AW-18486708769', buchen: 'rdIgCPrr-qIdEKGUk-9E', anruf: '-xwJCMr59aIdEKGUk-9E', anfrage: '67EsCKnR-KIdEKGUk-9E',
+    gutschein: '' /* ANPASSEN: Label der neuen Conversion »Gutschein kaufen« eintragen */ };
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
@@ -53,8 +47,7 @@
     }
   })();
 </script>
-<link rel="preload" as="image" href="img/battlekart-strecke.webp" fetchpriority="high">
-
+<link rel="preload" as="image" href="/img/battlekart-strecke.webp" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -536,10 +529,14 @@ section { position: relative; }
 .consent__btns button { flex: 1 1 120px; min-height: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,.35);
   background: transparent; color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
 .consent__btns button:focus-visible { outline: 3px solid #ffb400; outline-offset: 2px; }
+/* Gutschein-Seite: »Gutschein kaufen« ist länger als »Jetzt buchen«, darf im Knopf nicht umbrechen */
+.btn--book { white-space: nowrap; }
+@media (max-width: 420px) { .btn--book:not(.btn--sm) { font-size: 1.3rem; } .bookbar .btn { font-size: 1.1rem; } .header .btn--book.btn--sm { font-size: 1rem; padding: 2px 16px 0; } }
 </style>
 </head>
 <body>
 
+<!-- SVG-Icons (wie Hauptseite, dazu Geschenk und Brief) -->
 <!-- SVG-Icons -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
@@ -557,21 +554,22 @@ section { position: relative; }
   <symbol id="i-car" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0v-4l2-5h18l2 5v4a2 2 0 1 1-4 0"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></g></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.4-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></g></symbol>
 </svg>
 
-<!-- ================= HEADER (bewusst ohne Menü: ein Ziel = Buchung) ================= -->
+<!-- ================= HEADER (ohne Menü: ein Ziel = Gutschein kaufen) ================= -->
 <header class="header" id="header">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="BattleKart Düsseldorf-Ratingen – nach oben">
-      <img src="img/logo-bk.png" alt="BattleKart" width="64" height="48">
+      <img src="/img/logo-bk.png" alt="BattleKart" width="64" height="48">
       <span>Düsseldorf-<br>Ratingen</span>
     </a>
     <div class="header__actions">
-      <!-- ANPASSEN: Telefonnummer prüfen (laut Google Maps 02102 445500; auf battlekart.com steht aktuell eine fehlerhafte Nummer) -->
       <a class="header__phone js-track" data-cta="header_phone" href="tel:+492102445500" aria-label="Anrufen: 02102 445500">
         <svg><use href="#i-phone"/></svg><span class="txt">02102&nbsp;445500</span>
       </a>
-      <a class="btn btn--sm btn--book js-book js-track" data-cta="header_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen</a>
+      <a class="btn btn--sm btn--book js-gift js-track" data-cta="header_gift" href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards?confirmed=1">Gutschein kaufen</a>
     </div>
   </div>
 </header>
@@ -580,40 +578,32 @@ section { position: relative; }
 
 <!-- ================= HERO ================= -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero__media" id="hero-media" data-video="img/hero-ratingen.mp4">
-    <!-- VIDEO (nur Desktop als Hintergrund): Ausschnitt 6,9–18,7 s aus dem BattleKart-Video (YouTube OaUCY5nMAC4),
-         stumm, H.264, 1280×468, 1,7 MB, startet sofort. Auf dem Handy bleibt hier das Bild, das Video steht
-         als eigener Block unter dem Hero (siehe HERO-VIDEO HANDY).
-         Das Bild bleibt Vorschau und Ersatz (langsames Netz, Datensparmodus, reduzierte Bewegung). -->
-    <img src="img/battlekart-strecke.webp" alt="Spieler in E-Karts fahren über die projizierte, neonfarbene Spielstrecke bei BattleKart" width="1200" height="800" fetchpriority="high">
+  <div class="hero__media" id="hero-media" data-video="/img/hero-ratingen.mp4">
+    <img src="/img/battlekart-strecke.webp" alt="Spieler in E-Karts fahren über die projizierte, neonfarbene Spielstrecke bei BattleKart" width="1200" height="800" fetchpriority="high">
   </div>
   <div class="wrap">
     <div class="hero__content">
-      <p class="eyebrow" id="eyebrow"><span class="dot" aria-hidden="true"></span><span id="eyebrow-text">Kartbahn in Ratingen · Eröffnung 16.10.2026</span></p>
-      <h1 id="hero-title"><span id="h1-a">Das Videospiel,</span> <span class="hl" id="h1-b">in dem du selbst fährst!</span></h1>
-      <p class="hero__sub" id="hero-sub">Echte Elektro-Karts in einer virtuellen Spielwelt. Kein Bildschirm – du fährst mittendrin.</p>
+      <h1 id="hero-title"><span id="h1-a">Kart-Gutschein</span> <span class="hl" id="h1-b">verschenken!</span></h1>
+      <p class="hero__sub" id="hero-sub">Das Videospiel, in dem man selbst fährt: echte Elektro-Karts in einer virtuellen Spielwelt. Betrag frei wählen, der Gutschein kommt sofort als PDF per E-Mail.</p>
 
-      <p class="hero__meta"><b>ab 22 €</b> <span>pro Person</span> · <span>15 Min.</span> · <span>bis 12 Fahrer</span></p>
+      <p class="hero__meta"><b>1 Spiel 22 €</b> <span>pro Person</span> · <span>Betrag frei wählbar</span></p>
 
       <div class="hero__cta" id="hero-cta">
-        <a class="btn btn--book js-book js-track" data-cta="hero_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">
-          <svg><use href="#i-cal"/></svg>Jetzt buchen
+        <a class="btn btn--book js-gift js-track" data-cta="hero_gift" href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards?confirmed=1">
+          <svg><use href="#i-gift"/></svg>Gutschein kaufen
         </a>
-        <a class="hero__link js-track" data-cta="hero_calc" href="#preise" id="hero-secondary">Preise ansehen</a>
+        <a class="hero__link js-track" data-cta="hero_calc" href="#preise">Preise ansehen</a>
       </div>
-      <p class="hero__hint"><span id="hero-open"></span>Düsseldorf-Ratingen ist in der Buchung vorausgewählt.</p>
-
+      <p class="hero__hint">Gilt bei BattleKart Düsseldorf-Ratingen, Halskestraße 18.</p>
     </div>
   </div>
 </section>
 
-<!-- ================= HERO-VIDEO HANDY (nur bis 720 px Breite) =================
-     Eigener Block unter dem Hero statt Hintergrund (Svens Vorgabe 20.10.2026). 16:9, 640×360, 1 MB.
-     Zuerst Vorschaubild mit Play-Knopf; das Video startet nach einem kleinen Scroll von selbst oder sofort per Knopf. -->
-<div class="hero-clip" id="hero-clip" data-video="img/hero-ratingen-mobil.mp4">
+<!-- ================= HERO-VIDEO HANDY (nur bis 720 px Breite), wie auf der Hauptseite ================= -->
+<div class="hero-clip" id="hero-clip" data-video="/img/hero-ratingen-mobil.mp4">
   <div class="wrap">
     <div class="hero-clip__frame">
-      <img src="img/hero-ratingen-mobil.webp" alt="E-Karts fahren über die projizierte Spielstrecke bei BattleKart" width="640" height="360" loading="lazy" decoding="async">
+      <img src="/img/hero-ratingen-mobil.webp" alt="E-Karts fahren über die projizierte Spielstrecke bei BattleKart" width="640" height="360" loading="lazy" decoding="async">
       <button type="button" class="clip-play" id="clip-play" aria-label="Video abspielen"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
     </div>
   </div>
@@ -623,77 +613,74 @@ section { position: relative; }
 <div class="factbar">
   <div class="wrap">
     <ul class="facts" aria-label="Das Wichtigste auf einen Blick">
-      <li><b>15 Min.</b><span>pro Spiel inkl. Ein- &amp; Ausstieg</span></li>
-      <li><b>Ab 1</b><span>Person buchbar · bis 12 pro Rennen</span></li>
-      <li><b>ab 1,45 m</b><span>Körpergröße</span></li>
+      <li><b>Sofort</b><span>als PDF per E-Mail</span></li>
+      <li><b>Frei</b><span>wählbarer Betrag</span></li>
+      <li><b>80 Zeichen</b><span>für deinen persönlichen Gruß</span></li>
+      <li><b>ab 1,45 m</b><span>Körpergröße, kein Mindestalter</span></li>
       <li><b>0</b><span>Führerschein oder Erfahrung nötig</span></li>
-      <li><b>E-Karts</b><span>kein Helm · sicheres Fahren</span></li>
     </ul>
   </div>
 </div>
 
-<!-- ================= SPIELMODI ================= -->
+<!-- ================= WAS VERSCHENKT WIRD: SPIELMODI ================= -->
 <section class="section" aria-labelledby="modes-title">
   <div class="wrap">
     <div class="section__head">
-      <span class="kicker">6 Spielmodi</span>
-      <h2 id="modes-title">Nicht nur ein Rennen. <span class="hl">Sechs Arten zu gewinnen.</span></h2>
-      <p class="lead">Pro Buchung wählt ihr bis zu 3 verschiedene Spielmodi.</p>
+      <h2 id="modes-title">Das Videospiel, <span class="hl">in dem du selbst fährst.</span></h2>
+      <p class="lead">Echte E-Karts, Spielwelten direkt auf dem Boden, Raketen und Nitro. Ohne Vorkenntnisse, bis zu 12 Fahrer pro Rennen. Pro Buchung wählt ihr bis zu 3 verschiedene Spielmodi.</p>
     </div>
-    <!-- BILDER – VOR LIVEGANG: Originale auf battlekart.com sind 1–3 MB groß. Als WebP (~1200 px, < 200 KB) lokal ablegen. -->
     <div class="modes">
       <article class="mode">
-        <img src="img/battlekart-strecke.webp" alt="Mehrere E-Karts im BattleRace-Modus auf der projizierten Strecke" width="1200" height="800" loading="lazy" decoding="async">
+        <img src="/img/battlekart-strecke.webp" alt="Mehrere E-Karts im BattleRace-Modus auf der projizierten Strecke" width="1200" height="800" loading="lazy" decoding="async">
         <span class="mode__tag">Speed</span>
         <h3>BattleRace</h3>
         <p>Rennen mit Raketen, Nitro und Ölflecken.</p>
       </article>
       <article class="mode">
-        <img src="img/battlevirus.webp" alt="BattleVirus: Spielerin feuert im Kart eine Rakete ab, ihr Team folgt ihr" width="1024" height="512" loading="lazy" decoding="async">
+        <img src="/img/battlevirus.webp" alt="BattleVirus: Spielerin feuert im Kart eine Rakete ab, ihr Team folgt ihr" width="1024" height="512" loading="lazy" decoding="async">
         <span class="mode__tag">Teamwork</span>
         <h3>BattleVirus</h3>
         <p>Alle gegen das Virus – nur als Team zu stoppen.</p>
       </article>
       <article class="mode">
-        <img src="img/battlefoot.webp" alt="BattleFoot: Mehrere Karts spielen Fußball mit einem projizierten Ball" width="1200" height="800" loading="lazy" decoding="async">
+        <img src="/img/battlefoot.webp" alt="BattleFoot: Mehrere Karts spielen Fußball mit einem projizierten Ball" width="1200" height="800" loading="lazy" decoding="async">
         <span class="mode__tag">Team vs. Team</span>
         <h3>BattleFoot</h3>
         <p>Fußball mit Karts, Team gegen Team.</p>
       </article>
       <article class="mode">
-        <img src="img/battlepool.webp" alt="BattlePool: Spieler im Kart zielt auf eine riesige projizierte Kugel" width="1200" height="800" loading="lazy" decoding="async">
+        <img src="/img/battlepool.webp" alt="BattlePool: Spieler im Kart zielt auf eine riesige projizierte Kugel" width="1200" height="800" loading="lazy" decoding="async">
         <span class="mode__tag">Präzision</span>
         <h3>BattlePool</h3>
         <p>Riesige Kugeln mit dem Kart einlochen.</p>
       </article>
       <article class="mode">
-        <img src="img/battlesnake.webp" alt="BattleSnake: Lachender Fahrer im Kart, beleuchtet von der Projektion" width="768" height="384" loading="lazy" decoding="async">
+        <img src="/img/battlesnake.webp" alt="BattleSnake: Lachender Fahrer im Kart, beleuchtet von der Projektion" width="768" height="384" loading="lazy" decoding="async">
         <span class="mode__tag">Reaktion</span>
         <h3>BattleSnake</h3>
         <p>Snake in Hallengröße: sammeln, abschneiden.</p>
       </article>
       <article class="mode">
-        <img src="img/battlecolor.webp" alt="BattleColor: Spieler färbt mit dem Kart Felder auf dem Boden ein" width="1200" height="800" loading="lazy" decoding="async">
+        <img src="/img/battlecolor.webp" alt="BattleColor: Spieler färbt mit dem Kart Felder auf dem Boden ein" width="1200" height="800" loading="lazy" decoding="async">
         <span class="mode__tag">Taktik</span>
         <h3>BattleColor</h3>
         <p>Die meisten Felder einfärben gewinnt.</p>
       </article>
     </div>
-    <p class="modes__note"><svg><use href="#i-star"/></svg><span>Wer einen Slot zuerst bucht, legt die bis zu 3 Spielmodi fest. In der Buchung siehst du, ob ein Slot noch frei ist.</span></p>
+    <p class="notice"><svg><use href="#i-eye"/></svg><span><strong>Kein Simulator, keine VR-Brille.</strong> Das Kart fährt wirklich – man gibt Gas, bremst und lenkt selbst über die virtuelle Rennstrecke.</span></p>
   </div>
 </section>
 
-<!-- ================= PREISE + GRUPPENRECHNER ================= -->
+<!-- ================= PREISE + GUTSCHEIN-RECHNER ================= -->
 <section class="section section--alt" id="preise" aria-labelledby="price-title">
   <div class="wrap">
     <div class="section__head">
-      <span class="kicker">Preise</span>
-      <h2 id="price-title">Klare Preise. <span class="hl">Keine Überraschungen.</span></h2>
-      <p class="lead">Alle Preise pro Person. Mehr Spiele, günstiger pro Spiel – rechne aus, was euer Rennen kostet.</p>
+      <h2 id="price-title">So viel kostet <span class="hl">ein Spiel.</span></h2>
+      <p class="lead">Den Betrag auf dem Gutschein wählst du selbst. Rechne aus, wie viel für die Runde reicht, die du verschenken willst.</p>
     </div>
 
     <div class="pricing">
-      <!-- Preistabelle (ANPASSEN: muss mit der Center-Seite übereinstimmen) -->
+      <!-- Preistabelle wie auf der Hauptseite (ANPASSEN: muss mit der Center-Seite übereinstimmen) -->
       <div class="card prices">
         <h3>Preis pro Person</h3>
         <div class="tabs" role="tablist" aria-label="Preiskategorie">
@@ -710,22 +697,21 @@ section { position: relative; }
           <li><span>2 Spiele · 30 Min. <em class="save">spart 2 €</em></span><b>34 €</b></li>
           <li><span>3 Spiele · 45 Min. <em class="save">spart 6 €</em></span><b>48 €</b></li>
         </ul>
-        <!-- Gruppentarif gilt ab 10 Personen und wird im Shop automatisch berechnet (Korrekturen 19.10.2026). -->
-        <p class="prices__note">Preise pro Person. 1 Spiel = 15 Minuten inkl. Ein- und Ausstieg. Jedes weitere Spiel 17 € (unter 15: 14 €). Größere Gruppe? Ab 10 Personen erhältst du im Shop automatisch den Gruppentarif!</p>
+        <p class="prices__note">Preise pro Person inkl. MwSt. 1 Spiel = 15 Minuten inkl. Ein- und Ausstieg. Jedes weitere Spiel 17 € (unter 15: 14 €).</p>
       </div>
 
-      <!-- Preisrechner: Erwachsene und unter 15 getrennt, jede Person zu ihrem Preis -->
+      <!-- Gutschein-Rechner: gleicher Rechner wie auf der Hauptseite, Ergebnis = Gutscheinbetrag -->
       <div class="card calc" aria-labelledby="calc-title">
-        <h3 id="calc-title">Was kostet dein Rennen?</h3>
+        <h3 id="calc-title">Wie viel soll auf den Gutschein?</h3>
 
-        <span class="calc__label" id="lbl-adults">Wie viele Erwachsene?</span>
+        <span class="calc__label" id="lbl-adults">Für wie viele Erwachsene?</span>
         <div class="stepper" role="group" aria-labelledby="lbl-adults">
           <button type="button" id="a-minus" aria-label="Ein Erwachsener weniger">−</button>
           <output id="a-out" aria-live="polite">1<small>Erwachsene</small></output>
           <button type="button" id="a-plus" aria-label="Ein Erwachsener mehr">+</button>
         </div>
 
-        <span class="calc__label" id="lbl-kids">Wie viele unter 15 Jahren?</span>
+        <span class="calc__label" id="lbl-kids">Für wie viele unter 15 Jahren?</span>
         <div class="stepper" role="group" aria-labelledby="lbl-kids">
           <button type="button" id="k-minus" aria-label="Eine Person unter 15 weniger">−</button>
           <output id="k-out" aria-live="polite">0<small>unter 15</small></output>
@@ -742,121 +728,46 @@ section { position: relative; }
         <div class="calc__result" aria-live="polite">
           <div class="calc__total" id="c-total">42 €</div>
           <div class="calc__per"><b id="c-per">42 € p. P.</b><span id="c-time">2 Spiele · 30 Min.</span></div>
-          <p class="calc__vat" id="c-vat">Gesamtpreis für 1 Erwachsenen, inkl. MwSt.</p>
+          <p class="calc__vat" id="c-vat">Gutscheinbetrag für 1 Erwachsenen, inkl. MwSt.</p>
         </div>
-        <a class="btn btn--block btn--book js-book js-track" data-cta="calc_book" id="c-cta" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">
-          <svg><use href="#i-cal"/></svg>Jetzt buchen
+        <a class="btn btn--block btn--book js-gift js-track" data-cta="calc_gift" id="c-cta" href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards?confirmed=1">
+          <svg><use href="#i-gift"/></svg>Gutschein kaufen
         </a>
-        <p class="calc__more">Mehr als 12 Leute oder Firmenevent? <a class="js-track" data-cta="calc_b2b" href="https://survey.battlekart.com/de/formulier-b2b/?center=duesseldorf-ratingen&amp;countrycode=DEU" target="_blank" rel="noopener">Angebot anfragen</a> oder <a class="js-track" data-cta="calc_mail" href="mailto:info@duesseldorf-ratingen.battlekart.com">E-Mail schreiben</a>.</p>
+        <p class="calc__more">Den Betrag gibst du im Shop selbst ein.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= AUCH FÜR (Anlässe) ================= -->
-<section class="section" aria-labelledby="also-title">
+<!-- ================= SO KOMMT DER GUTSCHEIN AN + EINLÖSEN =================
+     Nur bestätigte Angaben aus dem Shop (10.11.2026). Gedruckte Karte im Umschlag erst eintragen,
+     wenn Preis, Bestellweg und letzter Bestelltag vor Weihnachten feststehen (offen bei Sven). -->
+<section class="section" aria-labelledby="send-title">
   <div class="wrap">
     <div class="section__head">
-      <span class="kicker">Für jeden Anlass</span>
-      <h2 id="also-title">Auch für</h2>
-    </div>
-    <div class="occasions occasions--more">
-      <article class="card occ" data-occ="gutschein">
-        <h3>Gutscheine</h3>
-        <p>Ein Rennen verschenken – den Gutschein gibt es direkt online.</p>
-        <a class="link js-track" data-cta="occ_gutschein" href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards">Gutschein kaufen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card occ" data-occ="firma">
-        <h3>Firmen &amp; Weihnachtsfeier</h3>
-        <p>Teambuilding mit echtem Wettbewerb. Größere Gruppen auf Anfrage.</p>
-        <a class="link js-track" data-cta="occ_b2b" href="https://survey.battlekart.com/de/formulier-b2b/?center=duesseldorf-ratingen&amp;countrycode=DEU" target="_blank" rel="noopener">Angebot anfragen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card occ" data-occ="kindergeburtstag">
-        <h3>Kindergeburtstag</h3>
-        <p>Bring your own Food! Bucht selbst online und meldet euren Geburtstag per <a href="mailto:info@duesseldorf-ratingen.battlekart.com">Mail</a> an. Mitfahren kann jeder ab 1,45&nbsp;m.</p>
-        <a class="link js-book js-track" data-cta="occ_kindergeburtstag" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card occ" data-occ="geburtstag">
-        <h3>Erwachsenengeburtstag</h3>
-        <p>Kart-Battle statt Kneipe. Das Geburtstagskind wählt die Spielmodi.</p>
-        <a class="link js-book js-track" data-cta="occ_geburtstag" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card occ" data-occ="jga">
-        <h3>JGA</h3>
-        <p>Braut oder Bräutigam gegen den Rest – bis zu 12 Fahrer pro Rennen.</p>
-        <a class="link js-book js-track" data-cta="occ_jga" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= WER ZUERST BUCHT (Svens Wunsch 27.10.2026: direkt unter »Für jeden Anlass«, weil kaum jemand bis ganz unten scrollt) ================= -->
-<section class="section final" aria-labelledby="final-title">
-  <div class="wrap">
-    <span class="kicker">Bereit?</span>
-    <h2 id="final-title">Wer zuerst bucht, <span class="hl">wählt die Spiele.</span></h2>
-    <p class="lead">Datum, Uhrzeit und Spielmodi selbst festlegen. Besonders am Wochenende und für Gruppen lohnt es sich, früh zu buchen.</p>
-    <a class="btn btn--book js-book js-track" data-cta="final_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1"><svg><use href="#i-cal"/></svg>Jetzt buchen</a>
-    <p class="book-hint">Spielerzahl, Datum, Uhrzeit und Spiele in der Buchung wählen.</p>
-  </div>
-</section>
-
-<!-- ================= SO FUNKTIONIERT'S ================= -->
-<section class="section section--alt" aria-labelledby="how-title">
-  <div class="wrap">
-    <div class="section__head">
-      <span class="kicker">Warum BattleKart?</span>
-      <h2 id="how-title">Echtes Kart. <span class="hl">Echtes Videospiel.</span></h2>
-    </div>
-    <div class="steps">
-      <article class="step">
-        <div class="step__icon"><svg><use href="#i-kart"/></svg></div>
-        <h3>Echte Elektro-Karts</h3>
-        <p>Du gibst Gas, bremst und lenkst selbst. Kurze Einweisung, Gurt an, los.</p>
-      </article>
-      <article class="step">
-        <div class="step__icon"><svg><use href="#i-bolt"/></svg></div>
-        <h3>Virtuelle Welt</h3>
-        <p>Virtuelle Strecke voller Action – Nitro und Rakete einsammeln, am Lenkrad aktivieren und deine Gegner überlisten.</p>
-      </article>
-      <article class="step">
-        <div class="step__icon"><svg><use href="#i-trophy"/></svg></div>
-        <h3>6 Spielmodi</h3>
-        <p>Rennen, Fußball, Billard, Snake und mehr. Bis zu 3 verschiedene Modi pro Buchung.</p>
-      </article>
-    </div>
-    <p class="notice"><svg><use href="#i-eye"/></svg><span><strong>Kein Simulator, keine VR-Brille.</strong> Das Kart fährt wirklich – du gibst Gas, bremst und lenkst selbst über die virtuelle Rennstrecke.</span></p>
-  </div>
-</section>
-
-<!-- ================= VOR ORT ================= -->
-<section class="section" aria-labelledby="onsite-title">
-  <div class="wrap">
-    <div class="section__head">
-      <span class="kicker">Vor Ort</span>
-      <h2 id="onsite-title">Alles, was ihr wissen müsst.</h2>
+      <h2 id="send-title">Sofort per E-Mail. <span class="hl">Auch in letzter Minute.</span></h2>
     </div>
     <div class="onsite">
       <ul class="info-list">
         <li>
-          <svg><use href="#i-shield"/></svg>
-          <div><h3>Sicheres Fahrgefühl – ganz ohne Helm</h3><p>Dank betreuter Strecke, klarer Einweisung und intelligenter Fahrtechnik passiert dir nichts.</p></div>
+          <svg><use href="#i-mail"/></svg>
+          <div><h3>Sofort als PDF</h3><p>Nach dem Kauf kommt der Gutschein als PDF per E-Mail und liegt zusätzlich in deinem Kundenkonto. Ausdrucken oder direkt weiterleiten.</p></div>
         </li>
         <li>
-          <svg><use href="#i-cup"/></svg>
-          <div><h3>Getränke</h3><p>Ob heiß oder kalt, für jeden ist etwas dabei.</p></div>
-        </li>
-        <li>
-          <svg><use href="#i-eye"/></svg>
-          <div><h3>Zuschauen erlaubt</h3><p>Begleitpersonen können das Rennen in der Halle verfolgen und ihre Crew anfeuern.</p></div>
-        </li>
-        <li>
-          <svg><use href="#i-cal"/></svg>
-          <div><h3>So läuft's ab</h3><p>Online buchen, etwas früher da sein, kurze Einweisung – dann 15 Minuten pro Spiel. Mindestgröße 1,45 m.</p></div>
+          <svg><use href="#i-gift"/></svg>
+          <div><h3>Mit persönlichem Gruß</h3><p>Schreib eine eigene Nachricht auf den Gutschein, bis zu 80 Zeichen.</p></div>
         </li>
         <li>
           <svg><use href="#i-check"/></svg>
-          <div><h3>Was anziehen?</h3><p>Bequeme Kleidung und feste, geschlossene Schuhe. Die Karts wirbeln etwas Staub auf – das weiße Outfit lieber zu Hause lassen.</p></div>
+          <div><h3>Mehrere auf einmal</h3><p>Für die ganze Familie oder das Team: mehrere Gutscheine in einer Bestellung.</p></div>
+        </li>
+        <li>
+          <svg><use href="#i-cal"/></svg>
+          <div><h3>So wird eingelöst</h3><p>Online buchen, Düsseldorf-Ratingen wählen, Termin und Spiele aussuchen und am Ende den Gutscheincode eingeben.</p></div>
+        </li>
+        <li>
+          <svg><use href="#i-pin"/></svg>
+          <div><h3>Gilt in Düsseldorf-Ratingen</h3><p>Der Gutschein gilt nur bei BattleKart Düsseldorf-Ratingen, nicht in Neuss oder anderen Centern.</p></div>
         </li>
       </ul>
 
@@ -865,21 +776,11 @@ section { position: relative; }
           <b>BattleKart Düsseldorf-Ratingen</b>
           Halskestraße 18<br>40880 Ratingen
         </address>
-
         <!-- Öffnungszeiten laut Google-Profil, Stand 16.10.2026. Bei Änderungen auch OPEN im Skript anpassen. -->
         <p class="meta"><svg width="18" height="18" style="vertical-align:-3px"><use href="#i-clock"/></svg> <span id="today-open"></span>Mo–Do &amp; So 10–21 Uhr · Fr 15–22 Uhr · Sa 10–22 Uhr</p>
-        <!-- ANPASSEN: Parkinfo eintragen und "hidden" entfernen -->
-        <p class="meta" hidden><svg width="18" height="18" style="vertical-align:-3px"><use href="#i-car"/></svg> Kostenlose Parkplätze direkt vor der Halle</p>
-        <!-- ANPASSEN: Sobald Google-Bewertungen für Ratingen vorliegen, Werte eintragen und "hidden" entfernen.
-             Nur echte Ratingen-Bewertungen verwenden, nicht die anderer Center. Der Hinweis zur Echtheitsprüfung ist Pflicht (§ 5b Abs. 3 UWG). -->
-        <div hidden>
-          <a class="rating" href="#" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span><span><b>4,9</b> · 000 Google-Bewertungen</span></a>
-          <p class="meta" style="font-size:.8rem;margin-top:6px">Bewertungen stammen von Google. Wir prüfen sie nicht auf Echtheit.</p>
-        </div>
-
-        <p class="meta">Freie Slots und Zeiten siehst du direkt in der Buchung. Fragen? <a class="js-track" data-cta="onsite_phone" href="tel:+492102445500">02102&nbsp;445500</a> · <a href="mailto:info@duesseldorf-ratingen.battlekart.com">E-Mail</a></p>
+        <p class="meta">Fragen zum Gutschein? <a class="js-track" data-cta="onsite_phone" href="tel:+492102445500">02102&nbsp;445500</a> · <a class="js-track" data-cta="onsite_mail" href="mailto:info@duesseldorf-ratingen.battlekart.com">E-Mail</a></p>
         <div class="row">
-          <a class="btn btn--book js-book js-track" data-cta="onsite_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1"><svg><use href="#i-cal"/></svg>Jetzt buchen</a>
+          <a class="btn btn--book js-gift js-track" data-cta="onsite_gift" href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards?confirmed=1"><svg><use href="#i-gift"/></svg>Gutschein kaufen</a>
           <a class="btn btn--ghost js-track" data-cta="onsite_route" href="https://www.google.com/maps/dir/?api=1&amp;destination=51.305046,6.836556" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Route planen</a>
         </div>
       </div>
@@ -887,118 +788,64 @@ section { position: relative; }
   </div>
 </section>
 
-<!-- ================= MIT WEM TRETET IHR AN? ================= -->
-<section class="section section--alt" aria-labelledby="occ-title">
-  <div class="wrap">
-    <div class="section__head">
-      <span class="kicker">Zielgruppen</span>
-      <h2 id="occ-title">Mit wem tretet ihr an?</h2>
-    </div>
-    <div class="occasions">
-      <article class="card occ" data-occ="freunde">
-        <div class="occ__emoji" aria-hidden="true">🏁</div>
-        <h3>Freunde &amp; Paare</h3>
-        <p>Der Abend, über den ihr noch lange redet. Rennen, Revanche, Siegerehrung – und alle wollen gleich noch eine Runde.</p>
-        <a class="link js-book js-track" data-cta="occ_freunde" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card occ" data-occ="gaming">
-        <div class="occ__emoji" aria-hidden="true">🎮</div>
-        <h3>Gaming-Fans</h3>
-        <p>Raketen, Nitro, Punkte und Power-ups – wie im Videospiel, nur dass du selbst im Kart sitzt.</p>
-        <a class="link js-book js-track" data-cta="occ_gaming" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ================= EVENT-HINWEIS (klein, wechselnd; abgelaufene Events verschwinden automatisch) =================
-     Events stehen im Skript unter EVENTS. Ohne aktuelles Event wird dieser Bereich gar nicht angezeigt. -->
-<section class="events" id="events" aria-label="Nächstes Event" hidden>
-  <div class="wrap" id="events-list"></div>
-</section>
-
-<!-- ================= FAQ ================= -->
-<section class="section" aria-labelledby="faq-title">
+<!-- ================= FAQ =================
+     Bewusst ohne Gültigkeit, Restwert, Mindestbetrag und gedruckte Karte: noch nicht bestätigt (Karte »Gutschein - Ads«, Abschnitt Offen). -->
+<section class="section section--alt" aria-labelledby="faq-title">
   <div class="wrap">
     <div class="section__head section__head--center">
-      <span class="kicker">FAQ</span>
       <h2 id="faq-title">Gut zu wissen</h2>
     </div>
     <div class="faq">
-      <!-- Fragen und Antworten von der Center-Seite battlekart.com/de/duesseldorf-ratingen übernommen (20.10.2026), Tippfehler korrigiert. -->
+      <details>
+        <summary>Wie schnell bekomme ich den Gutschein?</summary>
+        <p>Sofort nach dem Kauf als PDF per E-Mail. Zusätzlich findest du ihn in deinem Kundenkonto.</p>
+      </details>
+      <details>
+        <summary>Kann ich den Gutschein ausdrucken?</summary>
+        <p>Ja. Das PDF kannst du ausdrucken oder direkt per E-Mail oder Messenger weiterschicken.</p>
+      </details>
+      <details>
+        <summary>Welchen Betrag soll ich wählen?</summary>
+        <p>Den Betrag bestimmst du selbst. Ein Spiel kostet 22 € pro Person, zwei Spiele 42 €, drei Spiele 59 €. Unter 15 Jahren: 18 €, 34 € und 48 €.</p>
+      </details>
+      <details>
+        <summary>Kann ich eine persönliche Nachricht dazuschreiben?</summary>
+        <p>Ja, auf den Gutschein passen bis zu 80 Zeichen.</p>
+      </details>
+      <details>
+        <summary>Wo kann ich den Gutschein einlösen? Auch in Neuss?</summary>
+        <p>Nur bei BattleKart Düsseldorf-Ratingen, Halskestraße 18 in Ratingen. In Neuss und anderen Centern gilt er nicht.</p>
+      </details>
+      <details>
+        <summary>Wie löse ich den Gutschein ein?</summary>
+        <p>Online buchen, das Center Düsseldorf-Ratingen wählen, Termin und Spiele aussuchen und am Ende den Gutscheincode eingeben.</p>
+      </details>
+      <details>
+        <summary>Wer darf fahren?</summary>
+        <p>Jeder ab 1,45 m Körpergröße. Ein Mindestalter gibt es nicht, Führerschein oder Erfahrung braucht man auch nicht.</p>
+      </details>
+      <details>
+        <summary>Kann ich mehrere Gutscheine auf einmal kaufen?</summary>
+        <p>Ja, mehrere Gutscheine gehen in einer Bestellung.</p>
+      </details>
       <details>
         <summary>Was ist BattleKart?</summary>
         <p>BattleKart ist eine Kombination aus Elektro-Kartfahren und Videospiel. Du fährst echte Karts auf einer digitalen Strecke und interagierst mit projizierten Spielwelten – ähnlich wie in einem Videospiel, aber in echt.</p>
       </details>
       <details>
-        <summary>Brauche ich Vorkenntnisse oder Erfahrung im Kartfahren?</summary>
-        <p>Nein, BattleKart ist für Anfänger und Fortgeschrittene geeignet. Die Steuerung ist einfach und wird vor Ort erklärt.</p>
-      </details>
-      <details>
-        <summary>Wie lange dauert ein Spiel?</summary>
-        <p>Eine Session dauert 15 Minuten. Die reine Fahrzeit verkürzt sich um die Einweisung.</p>
-      </details>
-      <details>
-        <summary>Gibt es eine Mindestgröße oder ein Mindestalter?</summary>
-        <p>Du musst mindestens 1,45 m groß sein, um mit unseren Karts zu fahren. Ein Mindestalter gibt es nicht.</p>
-      </details>
-      <details>
-        <summary>Kann ich mit Brille oder Kontaktlinsen fahren?</summary>
-        <p>Ja, das ist problemlos möglich.</p>
-      </details>
-      <details>
-        <summary>Ist BattleKart körperlich anstrengend?</summary>
-        <p>Nein, es ist eher ein moderates Fahrerlebnis – Spaß und Reaktion stehen im Vordergrund.</p>
-      </details>
-      <details>
         <summary>Ist BattleKart sicher?</summary>
         <p>Ja, Sicherheit hat oberste Priorität: Die Karts sind elektrisch und gedrosselt, die Strecke wird überwacht, und vor jeder Fahrt gibt es eine Einweisung.</p>
       </details>
-      <details>
-        <summary>Kann es zu Zusammenstößen kommen?</summary>
-        <p>Leichte Kontakte sind möglich. Die Karts bremsen in der Regel jedoch vor einem Zusammenstoß automatisch.</p>
-      </details>
-      <details>
-        <summary>Wie viele Personen können gleichzeitig spielen?</summary>
-        <p>In unserer Halle können bis zu 12 Spieler gleichzeitig gegeneinander antreten.</p>
-      </details>
-      <details>
-        <summary>Kann ich als Gruppe zusammen spielen?</summary>
-        <p>Ja, BattleKart ist ideal für Gruppen, Firmenevents und Geburtstage.</p>
-      </details>
-      <details>
-        <summary>Muss ich im Voraus buchen?</summary>
-        <p>Wir empfehlen immer die vorherige Onlinebuchung. Insbesondere an Wochenenden und für Gruppen kannst du dir so die Plätze sichern!</p>
-      </details>
-      <details>
-        <summary>Gibt es Gruppenangebote oder Rabatte?</summary>
-        <p>Ja, für Gruppen, Firmen, Vereine und Geburtstage bieten wir extra Angebote an.</p>
-      </details>
-      <details>
-        <summary>Was passiert bei Verspätung?</summary>
-        <p>Je nach Auslastung kann die Teilnahme in dieser Situation nicht garantiert werden. Frühzeitig erscheinen wird also empfohlen!</p>
-      </details>
-      <details>
-        <summary>Was soll ich anziehen?</summary>
-        <p>Bequeme Kleidung und festes Schuhwerk werden empfohlen. Offene Schuhe dürfen nicht getragen werden.</p>
-      </details>
-      <details>
-        <summary>Brauche ich einen Helm?</summary>
-        <p>Nein, unsere Karts haben ein Antikollisionssystem. Damit werden Zusammenstöße vermieden und die Fahrt ist auch ohne Helm sicher.</p>
-      </details>
-      <details>
-        <summary>Ist BattleKart für Teamevents geeignet?</summary>
-        <p>Absolut! Neben Events für Vereine und Unternehmen bieten wir auch Geburtstagspartys an! Auf Nachfrage bieten wir zudem die exklusive Nutzung für größere Gruppen an.</p>
-      </details>
-      <details>
-        <summary>Gibt es Essen und Getränke vor Ort?</summary>
-        <p>Ja, wir haben eine große Auswahl an Kalt- und Heißgetränken. Auch eine kleine Auswahl an Speisen ist bei uns zu finden.</p>
-      </details>
-      <details>
-        <summary>Darf ich nur fahren oder auch zuschauen?</summary>
-        <p>Vom Gastrobereich hast du einen guten Blick auf die Strecke. Aber auch in der Halle selbst gibt es eine Aufenthaltsmöglichkeit, um dem Renngeschehen zu folgen.</p>
-      </details>
     </div>
+  </div>
+</section>
+
+<!-- ================= SCHLUSS ================= -->
+<section class="section final" aria-labelledby="final-title">
+  <div class="wrap">
+    <h2 id="final-title">Ein Geschenk, <span class="hl">über das man redet.</span></h2>
+    <p class="lead">Betrag wählen, Gruß dazuschreiben, sofort per E-Mail verschenken.</p>
+    <a class="btn btn--book js-gift js-track" data-cta="final_gift" href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards?confirmed=1"><svg><use href="#i-gift"/></svg>Gutschein kaufen</a>
   </div>
 </section>
 
@@ -1008,7 +855,6 @@ section { position: relative; }
 <footer class="footer">
   <div class="wrap">
     <p>BattleKart Düsseldorf-Ratingen · Halskestraße 18 · 40880 Ratingen</p>
-    <!-- Impressum, AGB und Datenschutz verweisen auf battlekart.com (Bens Vorgabe 20.10.2026). -->
     <nav aria-label="Rechtliches">
       <a href="https://www.battlekart.com/de/terms" target="_blank" rel="noopener">Impressum &amp; AGB</a>
       <a href="https://www.battlekart.com/de/privacy-policy" target="_blank" rel="noopener">Datenschutz</a>
@@ -1018,99 +864,48 @@ section { position: relative; }
   </div>
 </footer>
 
-<!-- ================= MOBILE BUCHUNGSLEISTE ================= -->
+<!-- ================= MOBILE LEISTE ================= -->
 <div class="bookbar" id="bookbar">
   <a class="icon-btn js-track" data-cta="bar_phone" href="tel:+492102445500" aria-label="Anrufen"><svg><use href="#i-phone"/></svg></a>
   <a class="icon-btn js-track" data-cta="bar_route" href="https://www.google.com/maps/dir/?api=1&amp;destination=51.305046,6.836556" target="_blank" rel="noopener" aria-label="Route planen"><svg><use href="#i-pin"/></svg></a>
-  <a class="btn btn--book js-book js-track" data-cta="bar_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1"><svg><use href="#i-cal"/></svg>Jetzt buchen</a>
+  <a class="btn btn--book js-gift js-track" data-cta="bar_gift" href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards?confirmed=1"><svg><use href="#i-gift"/></svg>Gutschein kaufen</a>
 </div>
 
 <script>
 /* =========================================================
-   BattleKart Düsseldorf-Ratingen – Google-Ads-Landingpage
-   1. Anlass-Varianten (?anlass=...) + Eröffnungs-Badge
-   2. Preisrechner, Preis-Tabs, Tracking, Header, Buchungsleiste
-   Wird mit "defer" geladen und läuft, sobald das HTML geparst ist.
+   BattleKart Düsseldorf-Ratingen – Gutschein-Landingpage für Google Ads
+   1. Überschrift je Anzeigengruppe (?gruppe=kart | gamer | erlebnis | lastminute)
+   2. Gutschein-Rechner, Preis-Tabs, Tracking, Header, mobile Leiste
    ========================================================= */
-/* Message-Match für Google Ads: ?anlass=jga | geburtstag | firma | weihnachtsfeier | freunde
-   Pro Anzeigengruppe die passende Final-URL mit Parameter hinterlegen. Nur feste Texte – keine URL-Inhalte werden ausgegeben. */
 (function () {
   var V = {
-    jga: {
-      a: 'JGA mit Vollgas', b: '– Kart-Battle in Ratingen.',
-      sub: 'Braut oder Bräutigam gegen den Rest: echte E-Karts, Raketen und Nitro, bis zu 12 Fahrer pro Rennen, der Rest feuert an.',
-      occ: 'jga'
-    },
-    geburtstag: {
-      a: 'Geburtstag mit Rennfieber', b: '– Kart-Battle in Ratingen.',
-      sub: 'Kart-Battle statt Kneipe: echte E-Karts, Spielwelten direkt auf dem Boden, Raketen und Nitro. Bis zu 12 Fahrer pro Rennen, 15 Minuten pro Spiel.',
-      occ: 'geburtstag'
-    },
-    firma: {
-      a: 'Teamevent mit echtem Wettbewerb', b: '– Kart-Battle in Ratingen.',
-      sub: 'Ohne Vorkenntnisse, ohne Führerschein: Jeder ab 1,45 m fährt mit. Bis 12 Fahrer pro Rennen, exklusive Hallennutzung für größere Gruppen auf Anfrage.',
-      occ: 'firma', b2b: true
-    },
-    weihnachtsfeier: {
-      a: 'Weihnachtsfeier mit Vollgas', b: '– Kart-Battle in Ratingen.',
-      sub: 'Die Weihnachtsfeier, über die im Januar noch geredet wird: echte E-Karts, Raketen und Nitro. Exklusive Hallennutzung für größere Gruppen auf Anfrage.',
-      occ: 'firma', b2b: true
-    },
-    gaming: {
-      a: 'Das Videospiel,', b: 'in dem du selbst fährst!',
-      sub: 'Raketen, Nitro, Punkte und Power-ups – projiziert auf den Boden, gefahren in echten Elektro-Karts. Bis zu 12 Fahrer pro Rennen.',
-      occ: 'gaming'
-    },
-    freunde: {
-      a: 'Euer Abend mit Rennfieber', b: '– Kart-Battle in Ratingen.',
-      sub: 'Raketen zünden, Nitro timen, Revanche fordern. 15 Minuten pures Adrenalin für bis zu 12 Leute – danach wird ausdiskutiert, wer wirklich gewonnen hat.',
-      occ: 'freunde'
-    }
+    gamer: { a: 'Das Videospiel', b: 'zum Verschenken!',
+      sub: 'Raketen, Nitro und Power-ups – projiziert auf den Boden, gefahren in echten Elektro-Karts. Betrag frei wählen, der Gutschein kommt sofort als PDF per E-Mail.' },
+    erlebnis: { a: 'Ein Erlebnis', b: 'statt noch ein Ding.',
+      sub: 'Ein Rennen im Videospiel, in dem man selbst fährt: echte Elektro-Karts in einer virtuellen Spielwelt. Betrag frei wählen, sofort als PDF per E-Mail.' },
+    lastminute: { a: 'Das Last-Minute-Geschenk,', b: 'sofort per E\u2011Mail.',
+      sub: 'Jetzt kaufen, in ein paar Minuten im Postfach: der BattleKart-Gutschein als PDF, mit deinem persönlichen Gruß.' }
   };
-  var key = new URLSearchParams(location.search).get('anlass');
+  var key = new URLSearchParams(location.search).get('gruppe');
   var v = key && Object.prototype.hasOwnProperty.call(V, key) ? V[key] : null;
   if (v) {
     document.getElementById('h1-a').textContent = v.a;
     document.getElementById('h1-b').textContent = v.b;
     document.getElementById('hero-sub').textContent = v.sub;
-    document.documentElement.setAttribute('data-anlass', v.occ);
-    if (v.b2b) {
-      var s = document.getElementById('hero-secondary');
-      s.textContent = 'Firmenangebot anfragen';
-      s.href = 'https://survey.battlekart.com/de/formulier-b2b/?center=duesseldorf-ratingen&countrycode=DEU';
-      s.target = '_blank'; s.rel = 'noopener';
-      s.setAttribute('data-cta', 'hero_b2b');
-    }
-  }
-  /* Eröffnungs-Badge wechselt nach dem Eröffnungstag automatisch */
-  if (new Date() >= new Date('2026-10-16T00:00:00+02:00')) {
-    document.getElementById('eyebrow-text').textContent = 'Kartbahn in Ratingen · Halskestraße 18';
   }
 })();
 
 (function () {
-  /* ================= KONFIGURATION ================= */
   var CONFIG = {
-    // € pro Person: 1. Spiel, 2. Spiel, jedes weitere (laut battlekart.com/de/duesseldorf-ratingen, Stand 14.10.2026)
+    // € pro Person: 1. Spiel, 2. Spiel, jedes weitere (wie Hauptseite, Stand 14.10.2026)
     prices: { adult: [22, 20, 17], kid: [18, 16, 14] },
-    maxPlayers: 12,   // pro Rennen
-    defaultAdults: 1,
-    defaultKids: 0,
-    defaultGames: 2   // vorausgewählt: 2 Spiele (höherer Buchungswert)
+    maxPlayers: 12, defaultAdults: 1, defaultKids: 0, defaultGames: 2
   };
-
-  /* ---------- Preisrechner ---------- */
   var adults = CONFIG.defaultAdults, kids = CONFIG.defaultKids, games = CONFIG.defaultGames;
   var $ = function (id) { return document.getElementById(id); };
   var fmt = function (n) { return n.toLocaleString('de-DE') + ' €'; };
   var total = function () { return adults + kids; };
-
-  // Summe für eine Person über n Spiele (1., 2., ab 3. Spiel)
-  function perPerson(tiers, n) {
-    var sum = 0;
-    for (var i = 0; i < n; i++) sum += tiers[Math.min(i, tiers.length - 1)];
-    return sum;
-  }
+  function perPerson(tiers, n) { var s = 0; for (var i = 0; i < n; i++) s += tiers[Math.min(i, tiers.length - 1)]; return s; }
   function people(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
   function render() {
     var pa = perPerson(CONFIG.prices.adult, games), pk = perPerson(CONFIG.prices.kid, games);
@@ -1128,7 +923,7 @@ section { position: relative; }
     var who = [];
     if (adults) who.push(people(adults, 'Erwachsenen', 'Erwachsene'));
     if (kids) who.push(people(kids, 'Person unter 15', 'Personen unter 15'));
-    $('c-vat').textContent = 'Gesamtpreis für ' + who.join(' und ') + ', inkl. MwSt.';
+    $('c-vat').textContent = 'Gutscheinbetrag für ' + who.join(' und ') + ', inkl. MwSt.';
     document.querySelectorAll('#games button').forEach(function (btn) {
       btn.setAttribute('aria-checked', String(+btn.dataset.games === games));
       var n = +btn.dataset.games, t = adults ? CONFIG.prices.adult : CONFIG.prices.kid;
@@ -1165,36 +960,28 @@ section { position: relative; }
   function select(t) {
     tabs.forEach(function (o) {
       var on = o === t;
-      o.setAttribute('aria-selected', String(on));
-      o.tabIndex = on ? 0 : -1;
+      o.setAttribute('aria-selected', String(on)); o.tabIndex = on ? 0 : -1;
       $(o.getAttribute('aria-controls')).hidden = !on;
     });
   }
 
-  /* ---------- Anlass hervorheben (aus ?anlass=) ---------- */
-  var occ = document.documentElement.getAttribute('data-anlass');
-  if (occ) {
-    var card = document.querySelector('.occ[data-occ="' + occ + '"]');
-    if (card) card.classList.add('is-active');
-  }
-
-  /* ---------- Google-Ads-Klick-IDs & UTMs an die Buchungsseite weiterreichen ---------- */
+  /* ---------- Google-Ads-Klick-IDs & UTMs an den Gutschein-Shop weiterreichen ---------- */
   var KEEP = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   var q = new URLSearchParams(location.search);
   var pass = KEEP.filter(function (k) { return q.get(k); });
   if (pass.length) {
-    document.querySelectorAll('a.js-book').forEach(function (a) {
+    document.querySelectorAll('a.js-gift').forEach(function (a) {
       var u = new URL(a.href);
       pass.forEach(function (k) { u.searchParams.set(k, q.get(k)); });
       a.href = u.toString();
     });
   }
 
-  /* ---------- Klick-Events in den dataLayer (welcher Knopf, wie viele Personen/Spiele) ---------- */
+  /* ---------- Klick-Events in den dataLayer ---------- */
   window.dataLayer = window.dataLayer || [];
   document.querySelectorAll('.js-track').forEach(function (a) {
     a.addEventListener('click', function () {
-      window.dataLayer.push({ event: 'lp_cta_click', lp_cta: a.dataset.cta, lp_players: total(), lp_adults: adults, lp_kids: kids, lp_games: games });
+      window.dataLayer.push({ event: 'lp_cta_click', lp_cta: a.dataset.cta, lp_seite: 'gutschein', lp_gruppe: key || 'kart', lp_betrag: $('c-total').textContent });
     });
   });
 
@@ -1203,16 +990,14 @@ section { position: relative; }
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a || !window.bkTagLoaded) return;
     var href = a.getAttribute('href'), art = null;
-    if (a.classList.contains('js-book')) art = 'buchen';
+    if (a.classList.contains('js-gift')) art = 'gutschein';
     else if (href.indexOf('tel:') === 0) art = 'anruf';
-    else if (href.indexOf('formulier-b2b') > -1) art = 'anfrage';
     if (!art || !BK_ADS[art]) return;
     gtag('event', 'conversion', { send_to: BK_ADS.id + '/' + BK_ADS[art], transport_type: 'beacon' });
   });
 
-  /* ---------- Eigener Zähler ohne Cookies (Dashboard reports.plaseo.de/battlekart) ----------
-     Zählt Besuche und Klicks auch ohne Einwilligung: speichert nichts im Browser, schickt keine Klick-ID,
-     der Server legt nur Summen je Tag ab (keine IP, kein Browser). */
+  /* ---------- Eigener Zähler ohne Cookies (Dashboard reports.plaseo.de/battlekart), wie Hauptseite ----------
+     anlass = 'gutschein-<gruppe>', damit die Seite im Dashboard getrennt auftaucht. */
   var ZAEHLER = 'https://reports.plaseo.de/eingang/klick';
   function quelle() {
     if (q.get('utm_source')) return q.get('utm_source');
@@ -1225,16 +1010,14 @@ section { position: relative; }
     if (/battlekart\.com$/.test(r)) return 'battlekart.com';
     return r === location.hostname ? 'intern' : 'verweis';
   }
-  var herkunft = quelle();
-  /* Echtheit: automatisierte Browser zählen nicht. Jede Aktion zählt höchstens einmal je Seitenaufruf
-     (wie Google »Eine Conversion je Klick«), nur im Speicher der Seite, nichts im Browser abgelegt. */
+  var herkunft = quelle(), seite = 'gutschein-' + (v ? key : 'kart');
   var robot = navigator.webdriver === true, schonGezaehlt = {};
   function zaehle(art, cta) {
     if (robot || schonGezaehlt[art]) return;
     schonGezaehlt[art] = true;
     try {
       var d = JSON.stringify({ art: art, cta: cta || '', quelle: herkunft, kampagne: q.get('utm_campaign') || '',
-        gruppe: q.get('utm_content') || '', keyword: q.get('utm_term') || '', anlass: occ || '',
+        gruppe: q.get('utm_content') || '', keyword: q.get('utm_term') || '', anlass: seite,
         gclid: (q.get('gclid') || q.get('gbraid') || q.get('wbraid')) ? 1 : 0 });
       if (navigator.sendBeacon) navigator.sendBeacon(ZAEHLER, new Blob([d], { type: 'text/plain' }));
       else fetch(ZAEHLER, { method: 'POST', body: d, keepalive: true, mode: 'no-cors' });
@@ -1245,18 +1028,15 @@ section { position: relative; }
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a || !e.isTrusted) return;
     var href = a.getAttribute('href') || '', art = null;
-    if (a.classList.contains('js-book')) art = 'buchen';
+    if (href.indexOf('giftcards') > -1) art = 'gutschein';
     else if (href.indexOf('tel:') === 0) art = 'anruf';
-    else if (href.indexOf('formulier-b2b') > -1) art = 'anfrage';
     else if (href.indexOf('google.com/maps') > -1) art = 'route';
-    else if (href.indexOf('giftcards') > -1) art = 'gutschein';
     else if (href.indexOf('mailto:') === 0) art = 'mail';
     if (art) zaehle(art, a.dataset.cta);
   });
 
-  /* ---------- Header + mobile Buchungsleiste ---------- */
+  /* ---------- Header + mobile Leiste ---------- */
   var header = $('header'), bar = $('bookbar'), heroCta = $('hero-cta');
-  /* Leiste erscheint, sobald die Hero-Buttons aus dem Bild gescrollt sind */
   function onScroll() {
     header.classList.toggle('is-solid', window.scrollY > 24);
     bar.classList.toggle('is-visible', heroCta.getBoundingClientRect().bottom < 0);
@@ -1264,74 +1044,6 @@ section { position: relative; }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   onScroll();
-})();
-
-/* ---------- Hero-Video: lädt nur, wenn das Gerät es verträgt.
-   Desktop: Hintergrund im Hero, startet sofort. Handy: eigener Block unter dem Hero mit Play-Knopf.
-   Das Video startet nach einem kleinen Scroll von selbst oder sofort per Knopf; Tippen aufs laufende Video pausiert. ---------- */
-(function () {
-  var c = navigator.connection || {};
-  var sparen = c.saveData || /(^|-)2g$/.test(c.effectiveType || '') || matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function start(box, src) {
-    var img = box.querySelector('img'), v = document.createElement('video');
-    v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.setAttribute('playsinline', '');
-    v.setAttribute('aria-hidden', 'true'); v.preload = 'auto'; if (img) v.poster = img.currentSrc || img.src;
-    v.src = src;
-    v.addEventListener('canplay', function () { if (img) img.replaceWith(v); else box.insertBefore(v, box.firstChild); v.play().catch(function () {}); }, { once: true });
-    v.load();
-    return v;
-  }
-  if (!matchMedia('(max-width: 720px)').matches) {
-    var hero = document.getElementById('hero-media'), hsrc = hero && hero.getAttribute('data-video');
-    if (hero && hsrc && !sparen) start(hero, hsrc);
-    return;
-  }
-  var clip = document.getElementById('hero-clip');
-  if (!clip) return;
-  var frame = clip.querySelector('.hero-clip__frame'), btn = document.getElementById('clip-play');
-  var src = clip.getAttribute('data-video'), v = null;
-  function abspielen() {
-    if (!v) {
-      v = start(frame, src);
-      v.addEventListener('playing', function () { clip.classList.add('is-playing'); btn.setAttribute('aria-label', 'Video pausieren'); });
-      v.addEventListener('pause', function () { clip.classList.remove('is-playing'); btn.setAttribute('aria-label', 'Video abspielen'); });
-    } else if (v.paused) {
-      v.play().catch(function () {});
-    }
-  }
-  btn.addEventListener('click', function (e) { e.stopPropagation(); abspielen(); });
-  frame.addEventListener('click', function () { if (v && !v.paused) v.pause(); });
-  if (sparen) return; /* Datensparmodus usw.: nur per Knopf */
-  function onScroll() {
-    if (window.scrollY < 40) return;
-    window.removeEventListener('scroll', onScroll);
-    abspielen();
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-
-/* ---------- Event-Hinweis: höchstens 2 kommende Events, abgelaufene verschwinden automatisch ----------
-   ANPASSEN: Events eintragen. Felder: titel, text, bis (letzter Tag, JJJJ-MM-TT), link (Buchung oder eigene Event-Landingpage).
-   Beispiel:
-   { titel: 'Halloween-Special', text: 'Sa 31.10. · [was genau, Preis]', bis: '2026-10-31', link: 'https://www.battlekart.com/de/duesseldorf-ratingen/booking' },
-   { titel: 'After-Work-Party', text: 'Do 05.11. ab 18 Uhr · [Angebot]', bis: '2026-11-05', link: '...' } */
-(function () {
-  var EVENTS = [];
-  var heute = new Date(); heute.setHours(0, 0, 0, 0);
-  var aktuell = EVENTS.filter(function (e) { return new Date(e.bis + 'T23:59:59') >= heute; })
-                      .sort(function (a, b) { return a.bis < b.bis ? -1 : 1; }).slice(0, 2);
-  if (!aktuell.length) return;
-  var box = document.getElementById('events-list');
-  aktuell.forEach(function (e) {
-    var d = document.createElement('div'); d.className = 'event';
-    var t = document.createElement('b'); t.textContent = 'Nächstes Event: ' + e.titel;
-    var s = document.createElement('span'); s.textContent = e.text;
-    var a = document.createElement('a'); a.href = e.link; a.textContent = 'Jetzt Plätze sichern →';
-    a.className = 'js-track'; a.setAttribute('data-cta', 'event_' + e.titel.toLowerCase().replace(/[^a-z0-9]+/g, '_'));
-    d.appendChild(t); d.appendChild(s); d.appendChild(a); box.appendChild(d);
-  });
-  document.getElementById('events').hidden = false;
 })();
 
 /* ---------- Öffnungszeiten: "Heute geöffnet bis …" (Uhrzeit Europe/Berlin) ---------- */
@@ -1343,7 +1055,7 @@ section { position: relative; }
   if (o && h >= o[0] && h < o[1]) txt = 'Heute geöffnet bis ' + o[1] + ' Uhr · ';
   else if (o && h < o[0]) txt = 'Heute ab ' + o[0] + ' Uhr geöffnet · ';
   if (!txt) return;
-  var a = document.getElementById('hero-open'), b = document.getElementById('today-open');
+  var a = null, b = document.getElementById('today-open');
   if (a) a.textContent = txt;
   if (b) { b.textContent = txt.replace(' · ', '') + ' · '; b.style.fontWeight = '800'; }
 })();
