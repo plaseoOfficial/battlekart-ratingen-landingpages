@@ -8,10 +8,10 @@
 <!-- Ads-Landingpage: nicht indexieren, damit sie der Center-Seite auf battlekart.com keine Konkurrenz in der organischen Suche macht. Google Ads crawlt die Seite trotzdem. -->
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#0D0A18">
-<link rel="icon" type="image/png" href="img/logo-bk.png">
+<link rel="icon" type="image/png" href="/img/logo-bk.png">
 <meta property="og:title" content="BattleKart Ratingen – Kartfahren wie im Videospiel">
 <meta property="og:description" content="Echte E-Karts, projizierte Spielwelten, Raketen &amp; Nitro. Ab 1 Person buchbar, 15 Minuten, ab 1,45 m.">
-<meta property="og:url" content="https://battlekart-ratingen.de/">
+<meta property="og:url" content="https://battlekart-ratingen.de/ga/kart/">
 <meta property="og:image" content="https://battlekart-ratingen.de/img/battlekart-strecke.webp">
 <meta property="og:locale" content="de_DE">
 
@@ -21,7 +21,7 @@
     Der Datei fehlen ö ü ß Ä Ö € „ und –. Wie auf battlekart.com ("grobold-lalezar") füllt Lalezar diese Zeichen auf.
   - Lalezar + Noto Sans liegen lokal in ./fonts/ (fonts.css), kein Abruf bei Google mehr (DSGVO). Erledigt 15.10.2026.
 -->
-<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <!-- ================= EINWILLIGUNG + GOOGLE-ADS-TAG =================
   Google Consent Mode v2: Standard ist "abgelehnt". Der Google-Tag (gtag.js) wird erst nach Klick auf
   "Akzeptieren" geladen, vorher geht keine Anfrage an Google.
@@ -53,7 +53,7 @@
     }
   })();
 </script>
-<link rel="preload" as="image" href="img/battlekart-strecke.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/img/battlekart-strecke.webp" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -563,7 +563,7 @@ section { position: relative; }
 <header class="header" id="header">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="BattleKart Düsseldorf-Ratingen – nach oben">
-      <img src="img/logo-bk.png" alt="BattleKart" width="64" height="48">
+      <img src="/img/logo-bk.png" alt="BattleKart" width="64" height="48">
       <span>Düsseldorf-<br>Ratingen</span>
     </a>
     <div class="header__actions">
@@ -580,18 +580,18 @@ section { position: relative; }
 
 <!-- ================= HERO ================= -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero__media" id="hero-media" data-video="img/hero-ratingen.mp4">
+  <div class="hero__media" id="hero-media" data-video="/img/hero-ratingen.mp4">
     <!-- VIDEO (nur Desktop als Hintergrund): Ausschnitt 6,9–18,7 s aus dem BattleKart-Video (YouTube OaUCY5nMAC4),
          stumm, H.264, 1280×468, 1,7 MB, startet sofort. Auf dem Handy bleibt hier das Bild, das Video steht
          als eigener Block unter dem Hero (siehe HERO-VIDEO HANDY).
          Das Bild bleibt Vorschau und Ersatz (langsames Netz, Datensparmodus, reduzierte Bewegung). -->
-    <img src="img/battlekart-strecke.webp" alt="Spieler in E-Karts fahren über die projizierte, neonfarbene Spielstrecke bei BattleKart" width="1200" height="800" fetchpriority="high">
+    <img src="/img/battlekart-strecke.webp" alt="Spieler in E-Karts fahren über die projizierte, neonfarbene Spielstrecke bei BattleKart" width="1200" height="800" fetchpriority="high">
   </div>
   <div class="wrap">
     <div class="hero__content">
       <p class="eyebrow" id="eyebrow"><span class="dot" aria-hidden="true"></span><span id="eyebrow-text">Kartbahn in Ratingen · Eröffnung 16.10.2026</span></p>
       <h1 id="hero-title"><span id="h1-a">Das Videospiel,</span> <span class="hl" id="h1-b">in dem du selbst fährst!</span></h1>
-      <p class="hero__sub" id="hero-sub">Echte Elektro-Karts, das Spiel wird auf den Boden projiziert.</p>
+      <p class="hero__sub" id="hero-sub">Echte Elektro-Karts in einer virtuellen Spielwelt. Kein Bildschirm – du fährst mittendrin.</p>
 
       <p class="hero__meta"><b>ab 22 €</b> <span>pro Person</span> · <span>15 Min.</span> · <span>bis 12 Fahrer</span></p>
 
@@ -610,10 +610,10 @@ section { position: relative; }
 <!-- ================= HERO-VIDEO HANDY (nur bis 720 px Breite) =================
      Eigener Block unter dem Hero statt Hintergrund (Svens Vorgabe 20.10.2026). 16:9, 640×360, 1 MB.
      Zuerst Vorschaubild mit Play-Knopf; das Video startet nach einem kleinen Scroll von selbst oder sofort per Knopf. -->
-<div class="hero-clip" id="hero-clip" data-video="img/hero-ratingen-mobil.mp4">
+<div class="hero-clip" id="hero-clip" data-video="/img/hero-ratingen-mobil.mp4">
   <div class="wrap">
     <div class="hero-clip__frame">
-      <img src="img/hero-ratingen-mobil.webp" alt="E-Karts fahren über die projizierte Spielstrecke bei BattleKart" width="640" height="360" loading="lazy" decoding="async">
+      <img src="/img/hero-ratingen-mobil.webp" alt="E-Karts fahren über die projizierte Spielstrecke bei BattleKart" width="640" height="360" loading="lazy" decoding="async">
       <button type="button" class="clip-play" id="clip-play" aria-label="Video abspielen"><svg aria-hidden="true"><use href="#i-play"/></svg></button>
     </div>
   </div>
@@ -643,37 +643,37 @@ section { position: relative; }
     <!-- BILDER – VOR LIVEGANG: Originale auf battlekart.com sind 1–3 MB groß. Als WebP (~1200 px, < 200 KB) lokal ablegen. -->
     <div class="modes">
       <article class="mode">
-        <img src="img/battlekart-strecke.webp" alt="Mehrere E-Karts im BattleRace-Modus auf der projizierten Strecke" width="1200" height="800" loading="lazy" decoding="async">
+        <img src="/img/battlekart-strecke.webp" alt="Mehrere E-Karts im BattleRace-Modus auf der projizierten Strecke" width="1200" height="800" loading="lazy" decoding="async">
         <span class="mode__tag">Speed</span>
         <h3>BattleRace</h3>
         <p>Rennen mit Raketen, Nitro und Ölflecken.</p>
       </article>
       <article class="mode">
-        <img src="img/battlevirus.webp" alt="BattleVirus: Spielerin feuert im Kart eine Rakete ab, ihr Team folgt ihr" width="1024" height="512" loading="lazy" decoding="async">
+        <img src="/img/battlevirus.webp" alt="BattleVirus: Spielerin feuert im Kart eine Rakete ab, ihr Team folgt ihr" width="1024" height="512" loading="lazy" decoding="async">
         <span class="mode__tag">Teamwork</span>
         <h3>BattleVirus</h3>
         <p>Alle gegen das Virus – nur als Team zu stoppen.</p>
       </article>
       <article class="mode">
-        <img src="img/battlefoot.webp" alt="BattleFoot: Mehrere Karts spielen Fußball mit einem projizierten Ball" width="1200" height="800" loading="lazy" decoding="async">
+        <img src="/img/battlefoot.webp" alt="BattleFoot: Mehrere Karts spielen Fußball mit einem projizierten Ball" width="1200" height="800" loading="lazy" decoding="async">
         <span class="mode__tag">Team vs. Team</span>
         <h3>BattleFoot</h3>
         <p>Fußball mit Karts, Team gegen Team.</p>
       </article>
       <article class="mode">
-        <img src="img/battlepool.webp" alt="BattlePool: Spieler im Kart zielt auf eine riesige projizierte Kugel" width="1200" height="800" loading="lazy" decoding="async">
+        <img src="/img/battlepool.webp" alt="BattlePool: Spieler im Kart zielt auf eine riesige projizierte Kugel" width="1200" height="800" loading="lazy" decoding="async">
         <span class="mode__tag">Präzision</span>
         <h3>BattlePool</h3>
         <p>Riesige Kugeln mit dem Kart einlochen.</p>
       </article>
       <article class="mode">
-        <img src="img/battlesnake.webp" alt="BattleSnake: Lachender Fahrer im Kart, beleuchtet von der Projektion" width="768" height="384" loading="lazy" decoding="async">
+        <img src="/img/battlesnake.webp" alt="BattleSnake: Lachender Fahrer im Kart, beleuchtet von der Projektion" width="768" height="384" loading="lazy" decoding="async">
         <span class="mode__tag">Reaktion</span>
         <h3>BattleSnake</h3>
         <p>Snake in Hallengröße: sammeln, abschneiden.</p>
       </article>
       <article class="mode">
-        <img src="img/battlecolor.webp" alt="BattleColor: Spieler färbt mit dem Kart Felder auf dem Boden ein" width="1200" height="800" loading="lazy" decoding="async">
+        <img src="/img/battlecolor.webp" alt="BattleColor: Spieler färbt mit dem Kart Felder auf dem Boden ein" width="1200" height="800" loading="lazy" decoding="async">
         <span class="mode__tag">Taktik</span>
         <h3>BattleColor</h3>
         <p>Die meisten Felder einfärben gewinnt.</p>
@@ -689,7 +689,7 @@ section { position: relative; }
     <div class="section__head">
       <span class="kicker">Preise</span>
       <h2 id="price-title">Klare Preise. <span class="hl">Keine Überraschungen.</span></h2>
-      <p class="lead">Alle Preise pro Person. Mehr Spiele, günstiger pro Spiel – rechne aus, was euer Rennen kostet. <strong>Wer zuerst bucht, wählt die Spiele!</strong></p>
+      <p class="lead">Alle Preise pro Person. Mehr Spiele, günstiger pro Spiel – rechne aus, was euer Rennen kostet.</p>
     </div>
 
     <div class="pricing">
@@ -787,6 +787,17 @@ section { position: relative; }
         <a class="link js-book js-track" data-cta="occ_jga" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen <svg><use href="#i-arrow"/></svg></a>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- ================= WER ZUERST BUCHT (Svens Wunsch 27.10.2026: direkt unter »Für jeden Anlass«, weil kaum jemand bis ganz unten scrollt) ================= -->
+<section class="section final" aria-labelledby="final-title">
+  <div class="wrap">
+    <span class="kicker">Bereit?</span>
+    <h2 id="final-title">Wer zuerst bucht, <span class="hl">wählt die Spiele.</span></h2>
+    <p class="lead">Datum, Uhrzeit und Spielmodi selbst festlegen. Besonders am Wochenende und für Gruppen lohnt es sich, früh zu buchen.</p>
+    <a class="btn btn--book js-book js-track" data-cta="final_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1"><svg><use href="#i-cal"/></svg>Jetzt buchen</a>
+    <p class="book-hint">Spielerzahl, Datum, Uhrzeit und Spiele in der Buchung wählen.</p>
   </div>
 </section>
 
@@ -988,17 +999,6 @@ section { position: relative; }
         <p>Vom Gastrobereich hast du einen guten Blick auf die Strecke. Aber auch in der Halle selbst gibt es eine Aufenthaltsmöglichkeit, um dem Renngeschehen zu folgen.</p>
       </details>
     </div>
-  </div>
-</section>
-
-<!-- ================= FINAL CTA ================= -->
-<section class="section final" aria-labelledby="final-title">
-  <div class="wrap">
-    <span class="kicker">Bereit?</span>
-    <h2 id="final-title">Wer zuerst bucht, <span class="hl">wählt die Spiele.</span></h2>
-    <p class="lead">Datum, Uhrzeit und Spielmodi selbst festlegen. Besonders am Wochenende und für Gruppen lohnt es sich, früh zu buchen.</p>
-    <a class="btn btn--book js-book js-track" data-cta="final_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1"><svg><use href="#i-cal"/></svg>Jetzt buchen</a>
-    <p class="book-hint">Spielerzahl, Datum, Uhrzeit und Spiele in der Buchung wählen.</p>
   </div>
 </section>
 
