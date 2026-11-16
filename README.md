@@ -3,7 +3,7 @@
 Entwurf, nicht für die Google-Suche gedacht (`noindex`). Ziel der Seite: Buchung.
 
 - `ga/kart/index.html` – Kart-Seite inkl. Preisrechner (bis 11.11.2026 `index.html`). Anzeigen-Varianten über `?anlass=jga | geburtstag | firma | weihnachtsfeier | freunde`.
-- `ga/gutscheine/index.html` – Gutschein-Seite für die Gutschein-Kampagne (noindex), Ziel: Gutschein kaufen. Überschrift je Anzeigengruppe über `?gruppe=kart | gamer | erlebnis | lastminute`. Conversion-Label `gutschein` in `BK_ADS` noch leer.
+- `ga/gutscheine/index.html` – Gutschein-Seite für die Gutschein-Kampagne (noindex), Ziel: Gutschein kaufen. Überschrift je Anzeigengruppe über `?gruppe=kart | gamer | erlebnis | lastminute`. Klick auf »Gutschein kaufen« meldet die Conversion »LP Klick Gutschein kaufen« (Label `gutschein` in `BK_ADS`, seit 16.11.2026).
 - `impressum.html`, `datenschutz.html` – Vorlagen, Stellen mit [ANPASSEN] vor dem Livegang füllen.
 - `fonts/`, `img/` – Schriften und Bilder lokal (kein Abruf bei Google Fonts).
 - Tracking: Google Tag Manager lädt erst mit eingetragener ID (`window.BK_GTM_ID`) und nach Einwilligung (Consent Mode v2).
