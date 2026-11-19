@@ -111,7 +111,6 @@ const istSonder = (u) => /^(#|mailto:|tel:|javascript:|data:|sms:|whatsapp:)/i.t
 function lokaleDatei(u) {
   let ohne = u.split('#')[0].split('?')[0];
   try { ohne = decodeURI(ohne); } catch (e) {}
-  if (ohne === '/') ohne = '/uebersicht/';   // "/" zeigt per Rewrite (vercel.json) auf die Übersicht
   const basis = ohne.startsWith('/') ? path.join(WURZEL, ohne) : path.resolve(ordner, ohne);
   const kandidaten = ohne.endsWith('/') ? [path.join(basis, 'index.html')] : [basis, path.join(basis, 'index.html'), basis + '.html'];
   return kandidaten.find((k) => fs.existsSync(k) && fs.statSync(k).isFile()) || null;

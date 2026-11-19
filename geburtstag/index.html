@@ -76,7 +76,7 @@
 
 <!-- Gemeinsames CSS (Kopie aus index.html ohne Hero, Video und Preisrechner). Tamys <style> steht im Inhalt und gewinnt bei Gleichstand. -->
 <link rel="stylesheet" href="/css/seite.css">
-<!-- Menü der Anlass-Seiten (Kopfzeile und Fuß), auch von /gutschein/ geladen -->
+<!-- Menü (Kopfzeile wie battlekart.com, Fuß mit den eigenen Seiten), auch von /gutschein/ geladen -->
 <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body>
@@ -101,25 +101,27 @@
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
 </svg>
 
-<!-- ================= HEADER mit Menü der Anlässe (seit 19.11.2026; die Ads-Seiten unter /ga/ bleiben ohne Menü) ================= -->
+<!-- ================= HEADER: Menü wie auf battlekart.com, alle Punkte führen dorthin (Ben, 19.11.2026). Die Ads-Seiten unter /ga/ bleiben ohne Menü. ================= -->
 <header class="header" id="header">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="BattleKart Düsseldorf-Ratingen – zur Startseite">
+    <a class="brand" href="https://www.battlekart.com/de/duesseldorf-ratingen" aria-label="BattleKart Düsseldorf-Ratingen auf battlekart.com">
       <img src="/img/logo-bk.png" alt="BattleKart" width="64" height="48">
       <span>Düsseldorf-<br>Ratingen</span>
     </a>
-    <nav class="nav" id="nav" aria-label="Anlässe">
-      <a href="/jga/">JGA</a>
-      <a href="/teamevent/">Teamevent</a>
-      <a href="/geburtstag/">Geburtstag</a>
-      <a href="/gutschein/">Gutschein</a>
+    <nav class="nav" id="nav" aria-label="BattleKart Düsseldorf-Ratingen auf battlekart.com">
+      <a href="https://www.battlekart.com/de/duesseldorf-ratingen#practical-info">Gut zu wissen</a>
+      <a href="https://www.battlekart.com/de/duesseldorf-ratingen#gamemodes">Spielmodi</a>
+      <a href="https://www.battlekart.com/de/duesseldorf-ratingen#events">Veranstaltungen</a>
+      <a href="https://www.battlekart.com/de/duesseldorf-ratingen/giftcards">Geschenkkarten</a>
+      <a href="https://www.battlekart.com/de/duesseldorf-ratingen#faqs">F.A.Q.</a>
+      <a href="https://www.battlekart.com/de/contact?center=duesseldorf-ratingen">Kontakt</a>
     </nav>
     <div class="header__actions">
       <a class="header__phone js-track" data-cta="header_phone" href="tel:+492102445500" aria-label="Anrufen: 02102 445500">
         <svg><use href="#i-phone"/></svg><span class="txt">02102&nbsp;445500</span>
       </a>
       <a class="btn btn--sm btn--book js-book js-track" data-cta="header_book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen</a>
-      <button type="button" class="nav-toggle" id="nav-toggle" aria-controls="nav" aria-expanded="false">Anlässe</button>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-controls="nav" aria-expanded="false">Menü</button>
     </div>
   </div>
 </header>
@@ -336,7 +338,6 @@
   <div class="wrap">
     <p>BattleKart Düsseldorf-Ratingen, Halskestraße 18, 40880 Ratingen</p>
     <nav class="footer__anlaesse" aria-label="Anlässe">
-      <a href="/">Übersicht</a>
       <a href="/jga/">JGA</a>
       <a href="/teamevent/">Teamevent</a>
       <a href="/geburtstag/">Geburtstag</a>
@@ -450,11 +451,8 @@
     if (art) zaehle(art, a.dataset.cta);
   });
 
-  /* ---------- Menü: aktuelle Seite markieren, auf schmalen Bildschirmen auf- und zuklappen ---------- */
+  /* ---------- Menü auf schmalen Bildschirmen auf- und zuklappen ---------- */
   var navToggle = $('nav-toggle'), kopf = $('header');
-  document.querySelectorAll('#nav a').forEach(function (a) {
-    if (a.getAttribute('href') === location.pathname) a.setAttribute('aria-current', 'page');
-  });
   if (navToggle && kopf) navToggle.addEventListener('click', function () {
     navToggle.setAttribute('aria-expanded', String(kopf.classList.toggle('nav-open')));
   });

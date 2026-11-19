@@ -1,13 +1,14 @@
 /* =========================================================
-   Navigation der Anlass-Seiten (seit 19.11.2026): Kopfzeile und Fuß.
-   Geladen vom Gerüst (_geruest/seite.html) und von /gutschein/. Nutzt die Design-Tokens der Seite
-   (--text, --line, --line-strong, --orange-hi, --header-h, --gutter, --font-body).
+   Menü der eigenen Seiten (seit 19.11.2026), geladen vom Gerüst (_geruest/seite.html) und von /gutschein/.
+   Kopfzeile: dieselben Punkte wie auf battlekart.com/de/duesseldorf-ratingen, alle führen dorthin
+   (Ben, 19.11.2026: keine eigene Startseite, die Leiste übernimmt die Struktur von battlekart.com).
+   Fuß: die eigenen Seiten untereinander. Nutzt die Design-Tokens der Seite.
    Die Ads-Seiten unter /ga/ laden diese Datei nicht: dort gibt es bewusst kein Menü.
    ========================================================= */
-.nav { display: flex; align-items: center; gap: 2px; }
-.nav a { padding: 9px 14px; border-radius: 999px; font-weight: 600; font-size: .95rem; text-decoration: none; color: var(--text); }
+.nav { display: flex; align-items: center; gap: 0; }
+.nav a { padding: 9px 11px; border-radius: 999px; font-weight: 600; font-size: .93rem; text-decoration: none; color: var(--text); white-space: nowrap; }
 .nav a:hover { background: rgba(255, 255, 255, .08); }
-.nav a[aria-current="page"] { box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+.header__phone .txt { display: none; }
 
 .nav-toggle {
   display: none; align-items: center; min-height: 44px; padding: 0 16px;
@@ -15,13 +16,10 @@
   color: var(--text); font: 600 .95rem/1 var(--font-body); cursor: pointer;
 }
 
-/* Fuß: die Anlässe als eigene Linkgruppe neben den rechtlichen Links */
+/* Fuß: die eigenen Seiten als eigene Linkgruppe neben den rechtlichen Links */
 .footer nav.footer__anlaesse a { color: var(--text); }
 
-@media (max-width: 1100px) {
-  .header__phone .txt { display: none; }
-}
-@media (max-width: 1000px) {
+@media (max-width: 1180px) {
   .nav-toggle { display: inline-flex; }
   .nav {
     display: none; position: absolute; top: var(--header-h); left: 0; right: 0;
@@ -33,5 +31,4 @@
   .nav a { padding: 14px 4px; border-radius: 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
   .nav a:last-child { border-bottom: 0; }
   .nav a:hover { background: none; }
-  .nav a[aria-current="page"] { box-shadow: none; color: var(--orange-hi); }
 }

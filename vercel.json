@@ -1,10 +1,19 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "missing": [
+        { "type": "query", "key": "anlass" },
+        { "type": "query", "key": "gclid" },
+        { "type": "query", "key": "gbraid" },
+        { "type": "query", "key": "wbraid" },
+        { "type": "query", "key": "utm_source" }
+      ],
+      "destination": "https://www.battlekart.com/de/duesseldorf-ratingen",
+      "permanent": false
+    }
+  ],
   "rewrites": [
-    { "source": "/", "has": [{ "type": "query", "key": "anlass" }], "destination": "/ga/kart/index.html" },
-    { "source": "/", "has": [{ "type": "query", "key": "gclid" }], "destination": "/ga/kart/index.html" },
-    { "source": "/", "has": [{ "type": "query", "key": "gbraid" }], "destination": "/ga/kart/index.html" },
-    { "source": "/", "has": [{ "type": "query", "key": "wbraid" }], "destination": "/ga/kart/index.html" },
-    { "source": "/", "has": [{ "type": "query", "key": "utm_source" }], "destination": "/ga/kart/index.html" },
-    { "source": "/", "destination": "/uebersicht/index.html" }
+    { "source": "/", "destination": "/ga/kart/index.html" }
   ]
 }
