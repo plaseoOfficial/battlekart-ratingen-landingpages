@@ -602,6 +602,10 @@ section { position: relative; }
   .facts li:last-child { grid-column: 1 / -1; }
   .occasions, .occasions--more { grid-template-columns: 1fr; }
   .games { grid-template-columns: repeat(3, 1fr); row-gap: 14px; }
+  /* Schmale Bildschirme: Schildchen einzeilig, damit es den Titel der Auswahl nicht verdeckt (19.11.2026) */
+  .games button { padding: 12px 8px 11px; }
+  .games button span { font-size: .76rem; }
+  .games button em { right: 4px; font-size: .58rem; letter-spacing: .02em; padding: 3px 6px; white-space: nowrap; }
   .bookbar { display: flex; }
   .price-chip strong { font-size: 1.7rem; }
 }
@@ -1081,7 +1085,7 @@ var key = null, v = null; /* SEO-Seite: keine Anzeigen-Varianten */
       btn.setAttribute('aria-checked', String(+btn.dataset.games === games));
       var n = +btn.dataset.games, t = adults ? CONFIG.prices.adult : CONFIG.prices.kid;
       var pp = perPerson(t, n), saved = n * t[0] - pp;
-      btn.querySelector('span').textContent = (n * 15) + ' Min. · ' + fmt(pp) + ' p. P.';
+      btn.querySelector('span').textContent = (n * 15) + ' Min. · ' + (fmt(pp) + ' p. P.').replace(/ /g, '\u00a0');
       btn.querySelector('i').textContent = saved > 0 ? 'spart ' + fmt(saved) : '';
     });
   }
