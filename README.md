@@ -20,3 +20,27 @@ Anzeigen mit Zieladresse `battlekart-ratingen.de/?anlass=…` weiterlaufen. Erst
 Bilder und Schriften immer mit absolutem Pfad (`/img/…`, `/fonts/…`).
 
 Stand: 11.11.2026
+
+## Anlass-Seiten und Übersicht (seit 19.11.2026)
+
+Strategie: `battlekart-ratingen.de` rankt nicht gegen `battlekart.com/de/duesseldorf-ratingen`. Hier stehen nur Seiten
+für Anlässe und Geschenke, jede führt zum Buchen oder Gutscheinkauf auf battlekart.com. Keine Seite zielt auf
+»Kartbahn Düsseldorf«, »BattleKart Düsseldorf« oder Kart-Preise. Preise für mehrere Spiele und Öffnungszeiten
+werden verlinkt, nicht abgeschrieben.
+
+| Adresse | Quelle | Bauen |
+|---|---|---|
+| `/` | `_inhalt/uebersicht.html` | `node werkzeuge/bauen.mjs --slug uebersicht --quelle _inhalt/uebersicht.html --pfad /` |
+| `/jga/` | `_inhalt/jga.html` | `node werkzeuge/bauen.mjs --slug jga --quelle _inhalt/jga.html` |
+| `/teamevent/` | `_inhalt/teamevent.html` | `node werkzeuge/bauen.mjs --slug teamevent --quelle _inhalt/teamevent.html` |
+| `/geburtstag/` | `_inhalt/geburtstag.html` | `node werkzeuge/bauen.mjs --slug geburtstag --quelle _inhalt/geburtstag.html` |
+| `/gutschein/` | `gutschein/index.html` (eigenständige Seite mit Rechner, von Hand gepflegt) | – |
+
+- Texte ändern: Datei in `_inhalt/` bearbeiten, bauen, `node werkzeuge/pruefen.mjs <slug>/index.html` (Übersicht mit `--pfad /`).
+- Menü (Kopfzeile und Fuß): `css/nav.css`, Links im Gerüst und in `gutschein/index.html`. Die Ads-Seiten unter `/ga/` haben kein Menü.
+- `/` ist die Übersicht (`uebersicht/index.html`, per Rewrite). Kommt ein Aufruf von `/` mit `anlass`, `gclid`, `gbraid`,
+  `wbraid` oder `utm_source`, liefert `vercel.json` weiter die Ads-Seite `/ga/kart/` aus. So laufen Anzeigen mit der
+  alten Zieladresse `/?anlass=…` weiter. Sobald alle Anzeigen auf `/ga/kart/` zeigen, können diese Regeln weg.
+- Strukturdaten: `<script type="application/ld+json">` in der Quelle bleibt beim Bauen erhalten (Fragen der Seite).
+
+Stand: 19.11.2026

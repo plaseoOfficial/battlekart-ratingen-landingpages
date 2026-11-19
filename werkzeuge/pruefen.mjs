@@ -2,6 +2,7 @@
 /* =========================================================
    Unterseite prüfen, bevor sie live geht
      node werkzeuge/pruefen.mjs gutschein/index.html
+     node werkzeuge/pruefen.mjs uebersicht/index.html --pfad /   (Seite erscheint unter einer anderen Adresse)
    Ausgabe: {"ok":bool,"fehler":[…],"hinweise":[…]}  ·  Exit 1 bei Fehlern, 2 bei falschem Aufruf.
    Fehler blockieren, Hinweise nicht. Die Sätze richten sich an die Gestalterin.
    ========================================================= */
@@ -21,7 +22,9 @@ if (!datei || !fs.existsSync(datei)) {
 const absolut = path.resolve(datei);
 const ordner = path.dirname(absolut);
 const rel = path.relative(WURZEL, absolut).split(path.sep).join('/');
-const pfad = rel === 'index.html' ? '/' : `/${rel.replace(/index\.html$/, '')}`;
+const pfadArg = process.argv.indexOf('--pfad');
+const pfad = pfadArg > 0 ? process.argv[pfadArg + 1]
+  : rel === 'index.html' ? '/' : `/${rel.replace(/index\.html$/, '')}`;
 
 const roh = fs.readFileSync(absolut, 'utf8');
 const html = ohneKommentare(roh);
@@ -57,7 +60,8 @@ if (robots.some((t) => /noindex/i.test(t.attr.content || '')))
 
 /* ---------- Buchungslink + Telefon (nur im Inhalt, Header und Buchungsleiste haben sie immer) ---------- */
 const links = tags(inhalt, 'a');
-if (!links.some((t) => /(^|\s)js-book(\s|$)/.test(t.attr.class || '') && t.attr.href))
+/* Die Gutschein-Seite führt zum Gutscheinkauf statt zur Buchung: dort zählt der Knopf mit class="js-gift" */
+if (!links.some((t) => /(^|\s)js-(book|gift)(\s|$)/.test(t.attr.class || '') && t.attr.href))
   fehler.push('Im Inhalt fehlt ein Buchungsknopf. Mindestens ein Link braucht class="js-book" und die Buchungsadresse, z. B. <a class="btn btn--book js-book" href="https://www.battlekart.com/de/duesseldorf-ratingen/booking?confirmed=1">Jetzt buchen</a>.');
 
 for (const t of links) {
@@ -107,6 +111,7 @@ const istSonder = (u) => /^(#|mailto:|tel:|javascript:|data:|sms:|whatsapp:)/i.t
 function lokaleDatei(u) {
   let ohne = u.split('#')[0].split('?')[0];
   try { ohne = decodeURI(ohne); } catch (e) {}
+  if (ohne === '/') ohne = '/uebersicht/';   // "/" zeigt per Rewrite (vercel.json) auf die Übersicht
   const basis = ohne.startsWith('/') ? path.join(WURZEL, ohne) : path.resolve(ordner, ohne);
   const kandidaten = ohne.endsWith('/') ? [path.join(basis, 'index.html')] : [basis, path.join(basis, 'index.html'), basis + '.html'];
   return kandidaten.find((k) => fs.existsSync(k) && fs.statSync(k).isFile()) || null;

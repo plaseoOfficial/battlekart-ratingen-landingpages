@@ -360,3 +360,23 @@ section { position: relative; }
 /* ---------- Unterseiten ---------- */
 /* Kein Hero unter dem festen Header: der Inhalt beginnt unterhalb, sonst verdeckt ihn der Header. */
 main { padding-top: var(--header-h); }
+
+/* =========================================================
+   Seitenkopf der Anlass-Seiten (seit 19.11.2026): Überschrift und Knopf links, Foto rechts.
+   Kein Text auf dem Foto. Größen wie .final h2, Farben und Radien aus den Tokens oben.
+   ========================================================= */
+.kopf { padding: clamp(36px, 6vw, 80px) 0 clamp(40px, 5vw, 64px); }
+.kopf .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+.kopf h1 { font-size: clamp(2.3rem, 5.2vw, 4rem); }
+.kopf .lead { font-size: 1.15rem; }
+.kopf__cta { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+.kopf__cta a:not(.btn) { font-weight: 800; }
+.kopf img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); }
+.kopf .facts { grid-column: 1 / -1; margin-top: 8px; }
+.text { max-width: 720px; display: grid; gap: 14px; color: var(--muted); font-size: 1.05rem; }
+.text a { color: var(--text); }
+.card.prices .btn, .card.prices .prices__link { margin-top: 18px; }
+.prices__link { display: inline-block; font-weight: 800; color: var(--text); }
+@media (max-width: 900px) {
+  .kopf .wrap { grid-template-columns: 1fr; }
+}

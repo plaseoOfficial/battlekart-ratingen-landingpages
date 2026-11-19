@@ -2,9 +2,13 @@
 /* =========================================================
    Unterseite aus Tamys HTML bauen
      node werkzeuge/bauen.mjs --slug gutschein --quelle ~/tamy/gutschein.html [--titel "…"] [--beschreibung "…"]
+     node werkzeuge/bauen.mjs --slug uebersicht --quelle _inhalt/uebersicht.html --pfad /
+       (--pfad: Adresse der Seite, wenn sie nicht /<slug>/ ist. Die Übersicht liegt in /uebersicht/, erscheint per
+        Rewrite in vercel.json aber unter /. canonical und Sitemap nennen dann --pfad.)
      node werkzeuge/bauen.mjs --nur-sitemap      (nur sitemap.xml + robots.txt neu, z. B. nach dem Löschen einer Seite)
    - Aus Tamys Datei zählt nur der Inhalt: <main>, sonst <body>, sonst die ganze Datei (Fragment).
      Darin steckende <header>, <footer> und alle <script> fliegen raus, <style> und <section> bleiben.
+     Ausnahme: <script type="application/ld+json"> (Strukturdaten, z. B. die Fragen der Seite) bleibt erhalten.
      <style> aus ihrem <head> wird vorn in den Inhalt übernommen.
    - Titel/Beschreibung aus ihrem <title> bzw. <meta name="description">, --titel/--beschreibung gehen vor.
    - Schreibt <slug>/index.html aus _geruest/seite.html, danach sitemap.xml und robots.txt neu.
@@ -45,6 +49,12 @@ function inhaltAus(roh) {
   const kopf = inneres(html, 'head');
   const kopfStyles = kopf ? [...kopf.matchAll(/<style(?=[\s>])[^>]*>[\s\S]*?<\/style>/gi)].map((m) => m[0]) : [];
 
+  /* Strukturdaten sind kein Skript, das läuft: vor dem Entfernen herausnehmen und am Ende wieder anhängen */
+  const strukturdaten = [];
+  inhalt = inhalt.replace(/<script(?=[\s>])[^>]*type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi, (m) => {
+    strukturdaten.push(m); return '';
+  });
+
   const entfernt = {};
   for (const t of ['script', 'header', 'footer']) [inhalt, entfernt[t]] = entferneElemente(inhalt, t);
   /* Reste wie <title>/<meta>/<link> aus einem Fragment gehören in den Kopf des Gerüsts, nicht in den Inhalt */
@@ -52,7 +62,7 @@ function inhaltAus(roh) {
     entfernt.kopfreste = (entfernt.kopfreste || 0) + 1;
     return '';
   });
-  inhalt = [...kopfStyles, inhalt.trim()].join('\n');
+  inhalt = [...kopfStyles, inhalt.trim(), ...strukturdaten].join('\n');
   return { inhalt, art, entfernt, kopfStyles: kopfStyles.length };
 }
 
@@ -66,11 +76,16 @@ function seitenFinden(ordner = WURZEL, rel = '') {
     if (fs.existsSync(datei)) {
       const robots = tags(ohneKommentare(fs.readFileSync(datei, 'utf8')), 'meta')
         .find((t) => (t.attr.name || '').toLowerCase() === 'robots');
-      if (!/noindex/i.test(robots?.attr.content || '')) seiten.push(`/${r}/`);
+      if (!/noindex/i.test(robots?.attr.content || '')) {
+        /* Adresse der Seite = ihr canonical (die Übersicht liegt in /uebersicht/, heißt aber /) */
+        const canonical = tags(ohneKommentare(fs.readFileSync(datei, 'utf8')), 'link')
+          .find((t) => (t.attr.rel || '').toLowerCase().split(/\s+/).includes('canonical'))?.attr.href || '';
+        seiten.push(canonical.startsWith(DOMAIN + '/') ? canonical.slice(DOMAIN.length) : `/${r}/`);
+      }
     }
     seiten.push(...seitenFinden(path.join(ordner, e.name), r));
   }
-  return seiten.sort();
+  return [...new Set(seiten)].sort();
 }
 
 function sitemapUndRobots() {
@@ -104,7 +119,8 @@ const roh = fs.readFileSync(quelle, 'utf8');
 const { inhalt, art, entfernt, kopfStyles } = inhaltAus(roh);
 const titel = a.titel ?? titelAus(roh);
 const beschreibung = a.beschreibung ?? metaAus(roh, 'description');
-const pfad = `/${slug}/`;
+const pfad = a.pfad ?? `/${slug}/`;
+if (!/^\/(?:[a-z0-9-]+\/)*$/.test(pfad)) abbruch('--pfad muss mit / beginnen und enden, z. B. "/" oder "/jga/"');
 
 const werte = { TITEL: escapeHtml(titel), BESCHREIBUNG: escapeHtml(beschreibung), PFAD: pfad };
 /* Erst die Kopf-Platzhalter, zuletzt der Inhalt: Platzhalter in Tamys Text bleiben stehen und fallen in pruefen.mjs auf */

@@ -10,7 +10,7 @@ export const WURZEL = path.resolve(path.dirname(fileURLToPath(import.meta.url)),
 export const DOMAIN = 'https://battlekart-ratingen.de';
 export const GERUEST = path.join(WURZEL, '_geruest', 'seite.html');
 /* Verzeichnisse, die keine Seiten sind (für Slug-Prüfung und Sitemap) */
-export const KEINE_SEITEN = new Set(['_geruest', 'werkzeuge', 'css', 'img', 'fonts', 'node_modules', '.git', '.vercel']);
+export const KEINE_SEITEN = new Set(['_geruest', '_inhalt', 'werkzeuge', 'css', 'img', 'fonts', 'node_modules', '.git', '.vercel']);
 
 export function ohneKommentare(html) {
   return html.replace(/<!--[\s\S]*?-->/g, '');
