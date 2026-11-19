@@ -461,7 +461,7 @@ section { position: relative; }
   .facts { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
-  .pricing, .onsite { grid-template-columns: 1fr; }
+  .pricing, .onsite { grid-template-columns: minmax(0, 1fr); }
   .steps { grid-template-columns: 1fr; }
   .modes {
     grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%;

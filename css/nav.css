@@ -26,9 +26,9 @@
   .nav {
     display: none; position: absolute; top: var(--header-h); left: 0; right: 0;
     flex-direction: column; align-items: stretch; gap: 0;
-    padding: 4px var(--gutter) 12px; background: rgba(13, 10, 24, .97); box-shadow: 0 1px 0 var(--line);
+    padding: 4px var(--gutter) 12px; background: #0D0A18; box-shadow: 0 1px 0 var(--line);
   }
-  .header.nav-open { background: rgba(13, 10, 24, .97); }
+  .header.nav-open { background: #0D0A18; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .header.nav-open .nav { display: flex; }
   .nav a { padding: 14px 4px; border-radius: 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
   .nav a:last-child { border-bottom: 0; }

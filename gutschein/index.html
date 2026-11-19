@@ -552,7 +552,7 @@ section { position: relative; }
   .facts { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
-  .pricing, .onsite { grid-template-columns: 1fr; }
+  .pricing, .onsite { grid-template-columns: minmax(0, 1fr); }
   .steps { grid-template-columns: 1fr; }
   .modes {
     grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%;
@@ -1016,7 +1016,7 @@ section { position: relative; }
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="wrap">
-    <p>BattleKart Düsseldorf-Ratingen · Halskestraße 18 · 40880 Ratingen</p>
+    <p>BattleKart Düsseldorf-Ratingen, Halskestraße 18, 40880 Ratingen</p>
     <nav class="footer__anlaesse" aria-label="Anlässe">
       <a href="/">Übersicht</a>
       <a href="/jga/">JGA</a>
