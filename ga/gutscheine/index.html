@@ -901,6 +901,9 @@ section { position: relative; }
 })();
 
 (function () {
+  // Gruppe aus der Anzeige (?gruppe=…); nur bekannte Werte, sonst Standardseite »kart«
+  var key = new URLSearchParams(location.search).get('gruppe');
+  if (!/^(gamer|erlebnis|lastminute)$/.test(key || '')) key = '';
   var CONFIG = {
     // € pro Person: 1. Spiel, 2. Spiel, jedes weitere (wie Hauptseite, Stand 14.10.2026)
     prices: { adult: [22, 20, 17], kid: [18, 16, 14] },
@@ -1015,7 +1018,7 @@ section { position: relative; }
     if (/battlekart\.com$/.test(r)) return 'battlekart.com';
     return r === location.hostname ? 'intern' : 'verweis';
   }
-  var herkunft = quelle(), seite = 'gutschein-' + (v ? key : 'kart');
+  var herkunft = quelle(), seite = 'gutschein-' + (key || 'kart');
   var robot = navigator.webdriver === true, schonGezaehlt = {};
   function zaehle(art, cta) {
     if (robot || schonGezaehlt[art]) return;
