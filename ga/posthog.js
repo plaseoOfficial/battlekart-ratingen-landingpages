@@ -1,8 +1,8 @@
 /* Öffentlicher Projektschlüssel und Ingestion-Host aus demselben BK-Projekt. */
 (function () {
   'use strict';
-  const projectToken = '';
-  const ingestionHost = '';
+  const projectToken = 'phc_yqTFHTEuhVjbJSFLvkw8cLeKj27bZqnyg9H8FyAbxrZU';
+  const ingestionHost = 'https://eu.i.posthog.com';
   if (!projectToken || !ingestionHost) return;
 
   const page = document.currentScript.dataset.page;
