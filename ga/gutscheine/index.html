@@ -1066,6 +1066,7 @@ section { position: relative; }
 </script>
 
 <!-- ================= COOKIE-BANNER (beide Knöpfe gleich stark, wie von Datenschutzbehörden gefordert) ================= -->
+<script src="/ga/posthog.js" data-page="gutscheine"></script>
 <div class="consent" id="consent" role="dialog" aria-live="polite" aria-label="Cookie-Einstellungen" hidden>
   <p>Dürfen wir mit Cookies von Google messen, ob unsere Anzeigen zu Buchungen führen? <a href="https://www.battlekart.com/de/privacy-policy" target="_blank" rel="noopener">Mehr</a></p>
   <div class="consent__btns">
@@ -1077,12 +1078,18 @@ section { position: relative; }
 (function () {
   var box = document.getElementById('consent');
   var saved = null; try { saved = localStorage.getItem('bk_consent'); } catch (e) {}
-  if (!saved) box.hidden = false;
+  var analytics = window.bkPostHog;
+  if (analytics) {
+    box.querySelector('p').firstChild.textContent =
+      'Dürfen wir mit Google Anzeigenklicks messen und mit PostHog auswerten, wie der Preisrechner und die Links zur Buchung oder zum Gutscheinshop genutzt werden? ';
+  }
+  if (!saved || (saved === 'granted' && analytics && analytics.needsChoice())) box.hidden = false;
   box.querySelectorAll('[data-consent]').forEach(function (b) {
     b.addEventListener('click', function () {
       var v = b.getAttribute('data-consent');
       try { localStorage.setItem('bk_consent', v); } catch (e) {}
       gtag('consent', 'update', { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+      if (analytics) analytics.choose(v);
       if (v === 'granted') bkLoadTag();
       box.hidden = true;
     });
