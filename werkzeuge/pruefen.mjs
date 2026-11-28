@@ -102,6 +102,8 @@ for (const m of sichtbar.matchAll(/\b(1[,.]\d{2})\s?m\b|\b(1\d\d)\s?cm\b/g)) {
 }
 
 /* ---------- Bilder, Links, Assets ---------- */
+let REWRITES = [];
+try { REWRITES = JSON.parse(fs.readFileSync(path.join(WURZEL, 'vercel.json'), 'utf8')).rewrites || []; } catch (e) {}
 const istExtern = (u) => /^(https?:)?\/\//i.test(u);
 const istSonder = (u) => /^(#|mailto:|tel:|javascript:|data:|sms:|whatsapp:)/i.test(u) || u === '';
 function lokaleDatei(u) {
@@ -109,7 +111,11 @@ function lokaleDatei(u) {
   try { ohne = decodeURI(ohne); } catch (e) {}
   const basis = ohne.startsWith('/') ? path.join(WURZEL, ohne) : path.resolve(ordner, ohne);
   const kandidaten = ohne.endsWith('/') ? [path.join(basis, 'index.html')] : [basis, path.join(basis, 'index.html'), basis + '.html'];
-  return kandidaten.find((k) => fs.existsSync(k) && fs.statSync(k).isFile()) || null;
+  const treffer = kandidaten.find((k) => fs.existsSync(k) && fs.statSync(k).isFile());
+  if (treffer) return treffer;
+  /* Rewrites aus vercel.json (z. B. "/" → /ga/kart/index.html) gelten als vorhanden, wenn ihr Ziel existiert */
+  const rewrite = REWRITES.find((r) => r.source === ohne);
+  return rewrite && rewrite.destination !== u ? lokaleDatei(rewrite.destination) : null;
 }
 const srcsetUrls = (s) => (s || '').split(',').map((x) => x.trim().split(/\s+/)[0]).filter(Boolean);
 
